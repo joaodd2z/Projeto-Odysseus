@@ -98,5 +98,4 @@ Project Odysseus acredita que o aprendizado deve ser:
 ---
 
 **Desenvolvido com ⚡ por Claude & Equipe**
-
 *Que sua jornada seja épica!* 🗡️✨
