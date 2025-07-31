@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Exportação PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #5855eb;
+        }
+        .test-data {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #6366f1;
+        }
+        pre {
+            overflow-x: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Teste de Exportação PDF - Project Odysseus</h1>
+        
+        <div class="test-data">
+            <h3>Dados de Teste:</h3>
+            <pre id="testData"></pre>
+        </div>
+        
+        <button onclick="testPDFExport()">📄 Testar Exportação PDF</button>
+        <button onclick="testWithRealData()">🎯 Testar com Dados Reais</button>
+        
+        <div id="status" style="margin-top: 20px; padding: 10px; border-radius: 5px;"></div>
+    </div>
+
+    <script>
+        // Dados de teste simples
+        const testSkillTreeData = {
+            goal: "Engenheiro de Machine Learning",
+            categories: [
+                {
+                    name: "Fundamentos de Programação e Engenharia de Software",
+                    skills: [
+                        {
+                            name: "Python",
+                            url: "https://python.org/"
+                        },
+                        {
+                            name: "Git e Controle de Versão",
+                            url: "https://git-scm.com/"
+                        },
+                        {
+                            name: "Estruturas de Dados e Algoritmos",
+                            url: null
+                        }
+                    ]
+                },
+                {
+                    name: "Matemática e Estatística",
+                    skills: [
+                        {
+                            name: "Álgebra Linear",
+                            url: "https://www.khanacademy.org/math/linear-algebra"
+                        },
+                        {
+                            name: "Cálculo",
+                            url: "https://www.khanacademy.org/math/calculus-1"
+                        },
+                        {
+                            name: "Estatística e Probabilidade",
+                            url: "https://www.coursera.org/learn/probability-statistics"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Mostrar dados de teste
+        document.getElementById('testData').textContent = JSON.stringify(testSkillTreeData, null, 2);
+
+        // Função de exportação PDF (copiada do exportUtils.js)
+        function exportToPDF(skillTreeData) {
+            try {
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF();
+                
+                // Configurações da página
+                const pageWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+                const margin = 20;
+                const contentWidth = pageWidth - (margin * 2);
+                let yPosition = margin;
+                
+                // Cores personalizadas
+                const colors = {
+                    primary: [99, 102, 241],    // Azul
+                    secondary: [139, 92, 246],  // Roxo
+                    text: [31, 41, 55],         // Cinza escuro
+                    lightText: [107, 114, 128]  // Cinza claro
+                };
+                
+                // Função para verificar se precisa de nova página
+                const checkNewPage = (requiredSpace = 20) => {
+                    if (yPosition + requiredSpace > pageHeight - margin) {
+                        pdf.addPage();
+                        yPosition = margin;
+                        return true;
+                    }
+                    return false;
+                };
+                
+                // Função para adicionar cabeçalho decorativo
+                const addHeader = () => {
+                    // Fundo do cabeçalho
+                    pdf.setFillColor(...colors.primary);
+                    pdf.rect(0, 0, pageWidth, 60, 'F');
+                    
+                    // Título principal
+                    pdf.setTextColor(255, 255, 255);
+                    pdf.setFontSize(24);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text('PROJECT ODYSSEUS', pageWidth / 2, 25, { align: 'center' });
+                    
+                    // Subtítulo
+                    pdf.setFontSize(14);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text('Mapa de Habilidades Personalizado', pageWidth / 2, 40, { align: 'center' });
+                    
+                    yPosition = 80;
+                };
+                
+                // Função para adicionar texto estilizado
+                const addStyledText = (text, options = {}) => {
+                    const {
+                        fontSize = 12,
+                        isBold = false,
+                        color = colors.text,
+                        indent = 0,
+                        spacing = 8,
+                        maxWidth = contentWidth - indent
+                    } = options;
+                    
+                    checkNewPage(fontSize + spacing);
+                    
+                    pdf.setFontSize(fontSize);
+                    pdf.setFont('helvetica', isBold ? 'bold' : 'normal');
+                    pdf.setTextColor(...color);
+                    
+                    // Dividir texto em linhas se necessário
+                    const lines = pdf.splitTextToSize(text, maxWidth);
+                    
+                    lines.forEach((line, index) => {
+                        if (index > 0) checkNewPage(fontSize + 2);
+                        pdf.text(line, margin + indent, yPosition);
+                        yPosition += fontSize + 2;
+                    });
+                    
+                    yPosition += spacing;
+                };
+                
+                // Função para adicionar seção com fundo colorido
+                const addSection = (title, content, bgColor = [248, 250, 252]) => {
+                    checkNewPage(30);
+                    
+                    // Fundo da seção
+                    pdf.setFillColor(...bgColor);
+                    pdf.roundedRect(margin - 5, yPosition - 5, contentWidth + 10, 25, 3, 3, 'F');
+                    
+                    // Título da seção
+                    addStyledText(title, {
+                        fontSize: 16,
+                        isBold: true,
+                        color: colors.primary,
+                        spacing: 15
+                    });
+                    
+                    // Conteúdo
+                    if (typeof content === 'function') {
+                        content();
+                    } else {
+                        addStyledText(content, { spacing: 20 });
+                    }
+                };
+                
+                // Adicionar cabeçalho
+                addHeader();
+                
+                // Seção do objetivo
+                addSection(`🎯 Jornada para: ${skillTreeData.goal}`, '', [240, 253, 244]);
+                
+                // Seção de categorias
+                skillTreeData.categories?.forEach((category) => {
+                    addSection(`📂 ${category.name}`, () => {
+                        category.skills?.forEach((skill) => {
+                            // Nome da habilidade
+                            addStyledText(`• ${skill.name}`, {
+                                fontSize: 11,
+                                isBold: true,
+                                color: colors.secondary,
+                                indent: 10,
+                                spacing: 4
+                            });
+                            
+                            // URL da documentação
+                            if (skill.url) {
+                                addStyledText(`📖 ${skill.url}`, {
+                                    fontSize: 9,
+                                    color: colors.lightText,
+                                    indent: 20,
+                                    spacing: 8
+                                });
+                            }
+                        });
+                    }, [245, 245, 255]);
+                });
+                
+                // Adicionar rodapé profissional
+                const pageCount = pdf.internal.getNumberOfPages();
+                for (let i = 1; i <= pageCount; i++) {
+                    pdf.setPage(i);
+                    
+                    // Linha decorativa
+                    pdf.setDrawColor(...colors.primary);
+                    pdf.setLineWidth(0.5);
+                    pdf.line(margin, pageHeight - 25, pageWidth - margin, pageHeight - 25);
+                    
+                    // Informações do rodapé
+                    pdf.setFontSize(8);
+                    pdf.setTextColor(...colors.lightText);
+                    pdf.setFont('helvetica', 'normal');
+                    
+                    // Estatísticas
+                    const totalSkills = skillTreeData.categories?.reduce((total, cat) => total + (cat.skills?.length || 0), 0) || 0;
+                    pdf.text(`🎯 ${totalSkills} habilidades mapeadas`, margin, pageHeight - 15);
+                    
+                    // Copyright
+                    pdf.text('Copyright 2025 © João Lucas de Oliveira', margin, pageHeight - 8);
+                    pdf.text('Desenvolvido com ⚡ para aprendizado pessoal', margin, pageHeight - 2);
+                    
+                    // Número da página
+                    pdf.text(`Página ${i} de ${pageCount}`, pageWidth - margin - 30, pageHeight - 8);
+                }
+                
+                // Salvar o PDF
+                const fileName = `skill-tree-${skillTreeData.goal.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}.pdf`;
+                pdf.save(fileName);
+                
+                return true;
+            } catch (error) {
+                console.error('Erro ao exportar PDF:', error);
+                throw error;
+            }
+        }
+
+        function showStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.style.backgroundColor = type === 'success' ? '#d1fae5' : type === 'error' ? '#fee2e2' : '#dbeafe';
+            statusDiv.style.color = type === 'success' ? '#065f46' : type === 'error' ? '#991b1b' : '#1e40af';
+            statusDiv.style.border = `1px solid ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'}`;
+        }
+
+        function testPDFExport() {
+            try {
+                showStatus('Iniciando exportação PDF...', 'info');
+                exportToPDF(testSkillTreeData);
+                showStatus('✅ PDF exportado com sucesso!', 'success');
+            } catch (error) {
+                showStatus(`❌ Erro na exportação: ${error.message}`, 'error');
+                console.error('Erro detalhado:', error);
+            }
+        }
+
+        function testWithRealData() {
+            // Simular dados mais complexos
+            const complexData = {
+                goal: "Desenvolvedor Full Stack Sênior",
+                categories: [
+                    {
+                        name: "Frontend Development",
+                        skills: [
+                            { name: "React.js", url: "https://reactjs.org/" },
+                            { name: "Vue.js", url: "https://vuejs.org/" },
+                            { name: "TypeScript", url: "https://www.typescriptlang.org/" },
+                            { name: "CSS Grid e Flexbox", url: null },
+                            { name: "Webpack", url: "https://webpack.js.org/" }
+                        ]
+                    },
+                    {
+                        name: "Backend Development",
+                        skills: [
+                            { name: "Node.js", url: "https://nodejs.org/" },
+                            { name: "Express.js", url: "https://expressjs.com/" },
+                            { name: "MongoDB", url: "https://www.mongodb.com/" },
+                            { name: "PostgreSQL", url: "https://www.postgresql.org/" },
+                            { name: "Redis", url: "https://redis.io/" }
+                        ]
+                    },
+                    {
+                        name: "DevOps e Infraestrutura",
+                        skills: [
+                            { name: "Docker", url: "https://www.docker.com/" },
+                            { name: "Kubernetes", url: "https://kubernetes.io/" },
+                            { name: "AWS", url: "https://aws.amazon.com/" },
+                            { name: "CI/CD", url: null },
+                            { name: "Terraform", url: "https://www.terraform.io/" }
+                        ]
+                    }
+                ]
+            };
+
+            try {
+                showStatus('Testando com dados mais complexos...', 'info');
+                exportToPDF(complexData);
+                showStatus('✅ PDF com dados complexos exportado com sucesso!', 'success');
+            } catch (error) {
+                showStatus(`❌ Erro na exportação complexa: ${error.message}`, 'error');
+                console.error('Erro detalhado:', error);
+            }
+        }
+    </script>
+</body>
+</html>

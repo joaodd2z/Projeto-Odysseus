@@ -5,179 +5,248 @@ import { saveAs } from 'file-saver';
 
 // Exportar para PDF
 export const exportToPDF = (skillTreeData) => {
-  const pdf = new jsPDF();
+  // Configuração inicial com encoding UTF-8
+  const pdf = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4',
+    putOnlyUsedFonts: true,
+    floatPrecision: 16
+  });
   
-  // Configurações melhoradas
+  // Configurações de página
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
-  const margin = 25;
+  const margin = 20;
   const contentWidth = pageWidth - 2 * margin;
+  const footerHeight = 25;
+  const headerHeight = 70;
   let yPosition = margin;
   
-  // Cores personalizadas
+  // Cores profissionais
   const colors = {
-    primary: [79, 70, 229],     // Indigo
-    secondary: [5, 150, 105],   // Emerald
-    accent: [124, 58, 237],     // Violet
-    text: [31, 41, 55],         // Gray-800
-    lightText: [107, 114, 128], // Gray-500
-    background: [249, 250, 251] // Gray-50
+    primary: [26, 35, 126],      // Azul escuro profissional
+    secondary: [16, 185, 129],   // Verde esmeralda
+    accent: [99, 102, 241],      // Índigo
+    text: [17, 24, 39],          // Cinza muito escuro
+    lightText: [75, 85, 99],     // Cinza médio
+    background: [248, 250, 252], // Cinza muito claro
+    white: [255, 255, 255]
   };
   
-  // Função para verificar nova página
-  const checkNewPage = (requiredSpace = 20) => {
-    if (yPosition + requiredSpace > pageHeight - margin - 30) {
+  // Função para limpar texto e evitar caracteres problemáticos
+  const cleanText = (text) => {
+    if (!text) return '';
+    return String(text)
+      .replace(/[\u0000-\u001F\u007F-\u009F]/g, '') // Remove caracteres de controle
+      .replace(/[\u2000-\u206F\u2E00-\u2E7F\u3000-\u303F]/g, ' ') // Substitui espaços especiais
+      .replace(/\s+/g, ' ') // Normaliza espaços múltiplos
+      .trim();
+  };
+  
+  // Função para verificar se precisa de nova página
+  const checkNewPage = (requiredSpace = 15) => {
+    if (yPosition + requiredSpace > pageHeight - footerHeight - 10) {
+      addFooter();
       pdf.addPage();
-      yPosition = margin;
+      addHeader();
       return true;
     }
     return false;
   };
   
-  // Função para adicionar cabeçalho decorativo
+  // Função para adicionar cabeçalho profissional
   const addHeader = () => {
-    // Fundo do cabeçalho
+    // Fundo gradiente do cabeçalho
     pdf.setFillColor(...colors.primary);
-    pdf.rect(0, 0, pageWidth, 60, 'F');
+    pdf.rect(0, 0, pageWidth, headerHeight, 'F');
     
-    // Título principal
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(24);
+    // Linha decorativa
+    pdf.setFillColor(...colors.secondary);
+    pdf.rect(0, headerHeight - 4, pageWidth, 4, 'F');
+    
+    // Logo/Título principal
+    pdf.setTextColor(...colors.white);
+    pdf.setFontSize(28);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('PROJECT ODYSSEUS', pageWidth / 2, 25, { align: 'center' });
+    const titleText = cleanText('PROJECT ODYSSEUS');
+    pdf.text(titleText, pageWidth / 2, 30, { align: 'center' });
     
     // Subtítulo
-    pdf.setFontSize(14);
+    pdf.setFontSize(16);
     pdf.setFont('helvetica', 'normal');
-    pdf.text('Mapa de Habilidades Personalizado', pageWidth / 2, 40, { align: 'center' });
+    const subtitleText = cleanText('Mapa de Habilidades Personalizado');
+    pdf.text(subtitleText, pageWidth / 2, 45, { align: 'center' });
     
-    yPosition = 80;
-  };
-  
-  // Função para adicionar texto estilizado
-  const addStyledText = (text, options = {}) => {
-    const {
-      fontSize = 12,
-      isBold = false,
-      color = colors.text,
-      indent = 0,
-      spacing = 8,
-      maxWidth = contentWidth - indent
-    } = options;
-    
-    checkNewPage(fontSize + spacing);
-    
-    pdf.setFontSize(fontSize);
-    pdf.setFont('helvetica', isBold ? 'bold' : 'normal');
-    pdf.setTextColor(...color);
-    
-    const lines = pdf.splitTextToSize(text, maxWidth);
-    
-    lines.forEach(line => {
-      checkNewPage();
-      pdf.text(line, margin + indent, yPosition);
-      yPosition += fontSize * 0.6;
+    // Data de geração
+    pdf.setFontSize(10);
+    const currentDate = new Date().toLocaleDateString('pt-BR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
+    const dateText = cleanText(`Gerado em: ${currentDate}`);
+    pdf.text(dateText, pageWidth / 2, 58, { align: 'center' });
     
-    yPosition += spacing;
+    yPosition = headerHeight + 15;
   };
   
-  // Função para adicionar seção com fundo
-  const addSection = (title, content, bgColor = colors.background) => {
-    checkNewPage(40);
-    
-    // Fundo da seção
-    pdf.setFillColor(...bgColor);
-    pdf.roundedRect(margin - 5, yPosition - 5, contentWidth + 10, 25, 3, 3, 'F');
-    
-    // Título da seção
-    addStyledText(title, {
-      fontSize: 16,
-      isBold: true,
-      color: colors.primary,
-      spacing: 15
-    });
-    
-    // Conteúdo
-    if (typeof content === 'function') {
-      content();
-    } else {
-      addStyledText(content, { spacing: 20 });
-    }
-  };
-  
-  // Adicionar cabeçalho
-  addHeader();
-  
-  // Seção do objetivo
-  addSection(`🎯 Jornada para: ${skillTreeData.goal}`, '', [240, 253, 244]);
-  
-  // Seção de categorias
-  skillTreeData.categories?.forEach((category) => {
-    addSection(`📂 ${category.name}`, () => {
-      category.skills?.forEach((skill) => {
-        // Nome da habilidade
-        addStyledText(`• ${skill.name}`, {
-          fontSize: 11,
-          isBold: true,
-          color: colors.secondary,
-          indent: 10,
-          spacing: 4
-        });
-        
-        // URL da documentação
-        if (skill.url) {
-          addStyledText(`📖 ${skill.url}`, {
-            fontSize: 9,
-            color: colors.lightText,
-            indent: 20,
-            spacing: 8
-          });
-        }
-      });
-    }, [245, 245, 255]);
-  });
-  
-  // Adicionar rodapé profissional em todas as páginas
-  const pageCount = pdf.internal.getNumberOfPages();
-  for (let i = 1; i <= pageCount; i++) {
-    pdf.setPage(i);
+  // Função para adicionar rodapé
+  const addFooter = () => {
+    const currentPage = pdf.internal.getCurrentPageInfo().pageNumber;
+    const totalPages = pdf.internal.getNumberOfPages();
     
     // Linha decorativa
     pdf.setDrawColor(...colors.primary);
-    pdf.setLineWidth(0.5);
-    pdf.line(margin, pageHeight - 25, pageWidth - margin, pageHeight - 25);
+    pdf.setLineWidth(0.8);
+    pdf.line(margin, pageHeight - footerHeight + 5, pageWidth - margin, pageHeight - footerHeight + 5);
     
-    // Copyright
+    // Configurar texto do rodapé
     pdf.setFontSize(9);
     pdf.setFont('helvetica', 'normal');
     pdf.setTextColor(...colors.lightText);
-    pdf.text(
-      'Copyright 2025 © João Lucas de Oliveira - Project Odysseus',
-      margin,
-      pageHeight - 15
-    );
     
-    // Número da página
-    pdf.text(
-      `Página ${i} de ${pageCount}`,
-      pageWidth - margin,
-      pageHeight - 15,
-      { align: 'right' }
-    );
+    // Copyright (esquerda)
+    const copyrightText = cleanText('Copyright 2025 João Lucas de Oliveira - Project Odysseus');
+    pdf.text(copyrightText, margin, pageHeight - 10);
     
-    // Data de geração
-    const currentDate = new Date().toLocaleDateString('pt-BR');
-    pdf.text(
-      `Gerado em: ${currentDate}`,
-      pageWidth / 2,
-      pageHeight - 15,
-      { align: 'center' }
-    );
+    // Número da página (direita)
+    const pageText = cleanText(`Página ${currentPage} de ${totalPages}`);
+    pdf.text(pageText, pageWidth - margin, pageHeight - 10, { align: 'right' });
+  };
+  
+  // Função para adicionar texto com quebra automática
+  const addText = (text, options = {}) => {
+    const {
+      fontSize = 12,
+      fontStyle = 'normal',
+      color = colors.text,
+      indent = 0,
+      lineSpacing = 1.2,
+      marginBottom = 8,
+      maxWidth = contentWidth - indent
+    } = options;
+    
+    if (!text) return;
+    
+    const cleanedText = cleanText(text);
+    if (!cleanedText) return;
+    
+    // Configurar fonte
+    pdf.setFontSize(fontSize);
+    pdf.setFont('helvetica', fontStyle);
+    pdf.setTextColor(...color);
+    
+    // Quebrar texto em linhas
+    const lines = pdf.splitTextToSize(cleanedText, maxWidth);
+    const lineHeight = fontSize * lineSpacing * 0.352778; // Conversão para mm
+    
+    // Verificar se precisa de nova página
+    const totalHeight = lines.length * lineHeight + marginBottom;
+    checkNewPage(totalHeight);
+    
+    // Adicionar cada linha
+    lines.forEach((line, index) => {
+      if (index > 0) checkNewPage(lineHeight);
+      pdf.text(line, margin + indent, yPosition);
+      yPosition += lineHeight;
+    });
+    
+    yPosition += marginBottom;
+  };
+  
+  // Função para adicionar seção com estilo
+  const addSection = (title, bgColor = colors.background) => {
+    checkNewPage(25);
+    
+    // Fundo da seção
+    pdf.setFillColor(...bgColor);
+    pdf.roundedRect(margin - 2, yPosition - 8, contentWidth + 4, 20, 2, 2, 'F');
+    
+    // Título da seção
+    addText(title, {
+      fontSize: 16,
+      fontStyle: 'bold',
+      color: colors.primary,
+      marginBottom: 12
+    });
+  };
+  
+  // Função para adicionar habilidade
+  const addSkill = (skill, isLast = false) => {
+    // Nome da habilidade
+    const skillName = cleanText(skill.name);
+    addText(`• ${skillName}`, {
+      fontSize: 11,
+      fontStyle: 'bold',
+      color: colors.secondary,
+      indent: 8,
+      marginBottom: 3
+    });
+    
+    // URL da documentação (se existir)
+    if (skill.url) {
+      const skillUrl = cleanText(skill.url);
+      addText(`Documentação: ${skillUrl}`, {
+        fontSize: 9,
+        color: colors.lightText,
+        indent: 15,
+        marginBottom: isLast ? 8 : 5
+      });
+    } else if (!isLast) {
+      yPosition += 3;
+    }
+  };
+  
+  // Iniciar documento
+  addHeader();
+  
+  // Seção do objetivo
+  const goalText = cleanText(skillTreeData.goal || 'Objetivo não definido');
+  addSection(`Jornada para: ${goalText}`, [240, 253, 244]);
+  
+  // Adicionar descrição do objetivo
+  addText('Este mapa de habilidades foi gerado para guiar seu desenvolvimento profissional de forma estruturada e eficiente.', {
+    fontSize: 10,
+    color: colors.lightText,
+    marginBottom: 15
+  });
+  
+  // Seções de categorias
+  if (skillTreeData.categories && Array.isArray(skillTreeData.categories)) {
+    skillTreeData.categories.forEach((category, categoryIndex) => {
+      if (!category || !category.name) return;
+      
+      const categoryName = cleanText(category.name);
+      addSection(categoryName, [245, 245, 255]);
+      
+      if (category.skills && Array.isArray(category.skills)) {
+        category.skills.forEach((skill, skillIndex) => {
+          if (!skill || !skill.name) return;
+          const isLastSkill = skillIndex === category.skills.length - 1;
+          addSkill(skill, isLastSkill);
+        });
+      }
+      
+      // Espaço entre categorias (exceto a última)
+      if (categoryIndex < skillTreeData.categories.length - 1) {
+        yPosition += 8;
+      }
+    });
   }
   
-  // Salvar com nome melhorado
-  const fileName = formatFileName(skillTreeData.goal, 'pdf');
+  // Adicionar rodapé na última página
+  addFooter();
+  
+  // Adicionar rodapé em todas as páginas anteriores
+  const totalPages = pdf.internal.getNumberOfPages();
+  for (let i = 1; i < totalPages; i++) {
+    pdf.setPage(i);
+    addFooter();
+  }
+  
+  // Salvar arquivo
+  const fileName = formatFileName(skillTreeData.goal || 'mapa-habilidades', 'pdf');
   pdf.save(fileName);
 };
 
@@ -338,6 +407,20 @@ export const exportToWord = async (skillTreeData) => {
 
 // Função utilitária para formatar nome de arquivo
 export const formatFileName = (goal, extension) => {
-  const cleanGoal = goal.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase();
-  return `project-odysseus-${cleanGoal}.${extension}`;
+  if (!goal) {
+    return `project-odysseus-mapa-habilidades.${extension}`;
+  }
+  
+  // Limpar e normalizar o texto do objetivo
+  const cleanGoal = String(goal)
+    .normalize('NFD') // Decompor caracteres acentuados
+    .replace(/[\u0300-\u036f]/g, '') // Remover acentos
+    .replace(/[^a-zA-Z0-9\s]/g, '') // Remover caracteres especiais
+    .replace(/\s+/g, '-') // Substituir espaços por hífens
+    .toLowerCase()
+    .substring(0, 50) // Limitar tamanho
+    .replace(/^-+|-+$/g, ''); // Remover hífens no início/fim
+  
+  const finalName = cleanGoal || 'mapa-habilidades';
+  return `project-odysseus-${finalName}.${extension}`;
 };

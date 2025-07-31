@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppStore } from '../stores/useAppStore';
 import { useAuth } from '../hooks/useAuth';
 import { playHoverSound, playClickSound } from '../utils/soundSystem';
 import { Menu, X, User, LogOut, Settings, Shield, Zap } from 'lucide-react';
+import logoOdysseus from '../assets/logo-odysseus.png';
 
 const Navbar = ({ apiStatus }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   
   const { 
     isAuthenticated, 
@@ -20,6 +22,17 @@ const Navbar = ({ apiStatus }) => {
   } = useAppStore();
   
   const { logout } = useAuth();
+
+  // Detectar scroll para minimizar navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSoundToggle = () => {
     if (soundEnabled) playClickSound();
@@ -44,9 +57,13 @@ const Navbar = ({ apiStatus }) => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 glass-card border-b border-primary/20">
+    <nav className={`fixed top-0 left-0 right-0 z-40 glass-card border-b border-primary/20 transition-all duration-300 ${
+      isScrolled ? 'py-1' : 'py-0'
+    }`}>
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className={`flex items-center justify-between transition-all duration-300 ${
+          isScrolled ? 'h-12' : 'h-16'
+        }`}>
           {/* Left Section */}
           <div className="flex items-center space-x-4">
             {/* Sidebar Toggle */}
@@ -69,20 +86,23 @@ const Navbar = ({ apiStatus }) => {
             {/* Logo */}
             <Link 
               to="/" 
-              className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+              className="flex items-center space-x-3 hover:opacity-80 transition-all duration-300"
               onClick={() => soundEnabled && playClickSound()}
               onMouseEnter={() => soundEnabled && playHoverSound()}
             >
               <div className="relative">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                  <Shield className="w-5 h-5 text-dark" />
+                <div className={`rounded-lg overflow-hidden border-2 border-primary/30 hover:border-primary/60 transition-all duration-300 ${
+                  isScrolled ? 'w-8 h-8' : 'w-10 h-10'
+                }`}>
+                  <img 
+                    src={logoOdysseus} 
+                    alt="Project Odysseus Logo" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse" />
-              </div>
-              <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-light font-orbitron">
-                  Project <span className="text-primary glow-text">Odysseus</span>
-                </h1>
+                <div className={`absolute -top-1 -right-1 bg-accent rounded-full animate-pulse transition-all duration-300 ${
+                  isScrolled ? 'w-2 h-2' : 'w-3 h-3'
+                }`} />
               </div>
             </Link>
           </div>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Exportação PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>Teste de Exportação PDF</h1>
+    <button onclick="testPDFExport()">Testar Exportação PDF</button>
+    
+    <script>
+        function testPDFExport() {
+            try {
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF();
+                
+                // Teste simples
+                pdf.setFontSize(20);
+                pdf.text('PROJECT ODYSSEUS - Teste', 20, 20);
+                pdf.setFontSize(12);
+                pdf.text('Este é um teste de exportação PDF', 20, 40);
+                
+                // Dados de teste
+                const testData = {
+                    goal: 'Engenheiro de Machine Learning',
+                    categories: [
+                        {
+                            name: 'Fundamentos de Programação',
+                            skills: [
+                                { name: 'Python', url: 'https://python.org' },
+                                { name: 'JavaScript', url: 'https://javascript.info' }
+                            ]
+                        }
+                    ]
+                };
+                
+                pdf.text(`Jornada para: ${testData.goal}`, 20, 60);
+                
+                testData.categories.forEach((category, index) => {
+                    const yPos = 80 + (index * 40);
+                    pdf.text(`Categoria: ${category.name}`, 20, yPos);
+                    
+                    category.skills.forEach((skill, skillIndex) => {
+                        const skillYPos = yPos + 15 + (skillIndex * 15);
+                        pdf.text(`• ${skill.name}`, 30, skillYPos);
+                        if (skill.url) {
+                            pdf.text(`  ${skill.url}`, 30, skillYPos + 10);
+                        }
+                    });
+                });
+                
+                pdf.save('teste-project-odysseus.pdf');
+                alert('PDF gerado com sucesso!');
+                
+            } catch (error) {
+                console.error('Erro ao gerar PDF:', error);
+                alert('Erro ao gerar PDF: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
