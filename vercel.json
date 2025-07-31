@@ -3,5 +3,11 @@
   "outputDirectory": "frontend/dist",
   "installCommand": "cd frontend && npm install",
   "devCommand": "cd frontend && npm run dev",
-  "framework": "vite"
+  "framework": "vite",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./frontend",
+  "functions": {
+    "backend/**": {
+      "excludeFiles": "**"
+    }
+  }
 }

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/odysseus-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Odysseus - Transform Your Career Into An Epic Journey</title>
+    <meta name="description" content="Transform your career goals into interactive skill trees. Gamified learning paths for developers, designers, and tech professionals." />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#121212" />
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Project Odysseus - Epic Career Skill Trees" />
+    <meta property="og:description" content="Transform your career goals into interactive skill trees. Gamified learning paths for tech professionals." />
+    <meta property="og:image" content="/og-image.png" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Project Odysseus - Epic Career Skill Trees" />
+    <meta name="twitter:description" content="Transform your career goals into interactive skill trees." />
+    
+    <!-- Prevent FOUC (Flash of Unstyled Content) -->
+    <style>
+      body {
+        background-color: #121212;
+        color: #EAEAEA;
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+      
+      /* Loading animation */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #121212;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(30, 203, 244, 0.3);
+        border-top: 3px solid #1ECBF4;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Hide loading screen when app loads */
+      .app-loaded .loading-screen {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- React App Root -->
+    <div id="root"></div>
+    
+    <!-- Vite Script -->
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Remove loading screen when app loads -->
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.body.classList.add('app-loaded');
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
