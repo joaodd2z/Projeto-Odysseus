@@ -34,6 +34,13 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     rollupOptions: {
+      external: (id) => {
+        // Ignore problematic internal modules
+        if (id.includes('internals/define-globalThis-property')) {
+          return true;
+        }
+        return false;
+      },
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
@@ -41,6 +48,9 @@ export default defineConfig({
           firebase: ['firebase/app', 'firebase/auth', 'firebase/firestore'],
           ui: ['lucide-react'],
         },
+        globals: {
+          'internals/define-globalThis-property': 'globalThis'
+        }
       },
     },
     chunkSizeWarningLimit: 1000,
@@ -58,7 +68,6 @@ export default defineConfig({
     ],
   },
   define: {
-    global: 'globalThis',
     __DEV__: JSON.stringify(process.env.NODE_ENV === 'development'),
   },
   css: {
