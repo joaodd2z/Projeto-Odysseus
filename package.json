@@ -1,0 +1,19 @@
+{
+  "name": "projeto-odysseus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project Odysseus - Frontend deployment configuration",
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "dev": "cd frontend && npm run dev",
+    "install": "cd frontend && npm install",
+    "start": "cd frontend && npm run preview"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "workspaces": [
+    "frontend"
+  ]
+}
