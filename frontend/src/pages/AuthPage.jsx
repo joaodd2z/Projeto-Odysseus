@@ -17,6 +17,7 @@ import {
   AlertCircle,
   CheckCircle
 } from 'lucide-react';
+import logoOdysseus from '@assets/logo-odysseus.png';
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -178,10 +179,16 @@ const AuthPage = () => {
         <div className="text-center">
           <Link 
             to="/" 
-            className="inline-flex items-center space-x-2 text-2xl font-bold text-primary mb-8 font-orbitron"
+            className="inline-flex items-center space-x-3 text-2xl font-bold text-primary mb-8 font-orbitron"
             onMouseEnter={() => soundEnabled && playHoverSound()}
           >
-            <TreePine className="w-8 h-8" />
+            <div className="w-10 h-10 rounded-lg overflow-hidden border-2 border-primary/30 hover:border-primary/60 transition-colors">
+              <img 
+                src={logoOdysseus} 
+                alt="Project Odysseus Logo" 
+                className="w-full h-full object-cover"
+              />
+            </div>
             <span>Odysseus</span>
           </Link>
           

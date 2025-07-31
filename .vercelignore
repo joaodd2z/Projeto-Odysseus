@@ -45,8 +45,9 @@ docs/
 false/
 
 # ONLY ALLOW THESE FILES/FOLDERS
+!frontend/
+!frontend/**
 !package.json
-!vercel.json
 !.vercelignore
 !README.md
 !LICENSE
