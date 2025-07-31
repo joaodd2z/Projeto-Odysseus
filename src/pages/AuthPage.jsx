@@ -17,7 +17,7 @@ import {
   AlertCircle,
   CheckCircle
 } from 'lucide-react';
-import logoOdysseus from '../assets/logo-odysseus.png';
+import logoOdysseus from '@assets/logo-odysseus.png';
 
 const AuthPage = () => {
   const navigate = useNavigate();
