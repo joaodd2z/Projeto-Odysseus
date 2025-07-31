@@ -17,7 +17,8 @@ import {
   AlertCircle,
   CheckCircle
 } from 'lucide-react';
-import logoOdysseus from '@assets/logo-odysseus.png';
+// Logo será carregada diretamente da pasta public
+const logoOdysseus = '/logo-odysseus.svg';
 
 const AuthPage = () => {
   const navigate = useNavigate();

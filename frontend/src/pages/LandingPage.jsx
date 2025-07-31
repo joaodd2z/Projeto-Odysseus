@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { ChevronDown, Sparkles, Target, TreePine, BookOpen, Rocket, Trophy, Download, FileText, FileSpreadsheet } from 'lucide-react';
 import AIGenerator from '../components/AIGenerator';
 import SkillTreeResults from '../components/SkillTreeResults';
-import logoOdysseus from '@assets/logo-odysseus.png';
+// Logo será carregada diretamente da pasta public
+const logoOdysseus = '/logo-odysseus.svg';
 
 const LandingPage = () => {
   const [activeSection, setActiveSection] = useState('hero');

@@ -4,7 +4,8 @@ import { useAppStore } from '../stores/useAppStore';
 import { useAuth } from '../hooks/useAuth';
 import { playHoverSound, playClickSound } from '../utils/soundSystem';
 import { Menu, X, User, LogOut, Settings, Shield, Zap } from 'lucide-react';
-import logoOdysseus from '@assets/logo-odysseus.png';
+// Logo será carregada diretamente da pasta public
+const logoOdysseus = '/logo-odysseus.svg';
 
 const Navbar = ({ apiStatus }) => {
   const location = useLocation();
