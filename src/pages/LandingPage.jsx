@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Sparkles, Target, TreePine, BookOpen, Rocket, Trophy, Download, FileText, FileSpreadsheet } from 'lucide-react';
 import AIGenerator from '../components/AIGenerator';
 import SkillTreeResults from '../components/SkillTreeResults';
-import logoOdysseus from '../assets/logo-odysseus.png';
+import logoOdysseus from '@assets/logo-odysseus.png';
 
 const LandingPage = () => {
   const [activeSection, setActiveSection] = useState('hero');
