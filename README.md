@@ -1,101 +1,239 @@
-# 🧭 Project Odysseus
+# 🧭 Project Odysseus - Frontend
 
-> **"Transforme sua jornada profissional em uma aventura épica"**
+Um sistema de aprendizado gamificado que transforma objetivos de carreira em árvores de habilidades épicas.
 
-Uma aplicação web que converte objetivos de carreira em árvores de habilidades interativas, gamificadas e visuais - inspirada nos melhores RPGs.
+## 🚀 Tecnologias
 
-## 🎯 Visão Geral
+- **React 18** - Biblioteca principal
+- **Vite** - Build tool e dev server
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Framework de CSS utilitário
+- **Firebase** - Autenticação e banco de dados
+- **Zustand** - Gerenciamento de estado
+- **React Router** - Roteamento
+- **Framer Motion** - Animações
+- **D3.js** - Visualizações de dados
+- **Lucide React** - Ícones
 
-**Project Odysseus** é mais que um mapa de carreira - é um sistema completo de progressão profissional que transforma o aprendizado em uma experiência imersiva e motivadora.
+## 📦 Instalação
 
-### 🔥 Funcionalidades Principais
+1. **Clone o repositório:**
+```bash
+git clone <repository-url>
+cd frontend
+```
 
-- **🌳 Árvores de Habilidades Dinâmicas**: Geração automática baseada em objetivos de carreira
-- **🎮 Gamificação Completa**: Sistema de desbloqueio, progressão e conquistas
-- **📊 Visualização Interativa**: Interface inspirada em RPGs com D3.js
-- **🔗 Portfólio Integrado**: Conecte suas skills com provas práticas (GitHub, Behance, etc.)
-- **🎵 Experiência Sonora**: Feedback auditivo imersivo para cada interação
-- **🔥 Efeitos Visuais**: Partículas, animações e transições cinematográficas
+2. **Instale as dependências:**
+```bash
+npm install
+```
 
-## 🛠️ Stack Tecnológica
+3. **Configure as variáveis de ambiente:**
+```bash
+cp .env.example .env
+```
+Edite o arquivo `.env` com suas configurações do Firebase e outras APIs.
 
-### Backend
-- **Python** + **FastAPI** (API assíncrona e performática)
-- **Firebase Firestore** (banco de dados NoSQL)
-- **Firebase Auth** (autenticação JWT)
-- **Firebase Storage** (arquivos de usuário)
+4. **Inicie o servidor de desenvolvimento:**
+```bash
+npm run dev
+```
 
-### Frontend
-- **React.js** + **Vite** (desenvolvimento ultrarrápido)
-- **Tailwind CSS** + **Framer Motion** (estilização e animações)
-- **D3.js** (visualização de árvores interativas)
-- **Web Audio API** (sistema de som)
+O aplicativo estará disponível em `http://localhost:3000`
 
-### Deploy
-- **Frontend**: Vercel
-- **Backend**: Railway
-- **Database**: Firebase Cloud
+## 🏗️ Estrutura do Projeto
+
+```
+src/
+├── components/          # Componentes reutilizáveis
+│   ├── ErrorBoundary.jsx
+│   ├── LoadingScreen.jsx
+│   ├── Navbar.jsx
+│   ├── NotificationToast.jsx
+│   ├── ProtectedRoute.jsx
+│   ├── PublicRoute.jsx
+│   ├── Sidebar.jsx
+│   ├── SkillNode.jsx
+│   └── SkillTreeVisualization.jsx
+├── hooks/               # Custom hooks
+│   └── useAuth.js
+├── pages/               # Páginas da aplicação
+│   ├── AboutPage.jsx
+│   ├── AuthPage.jsx
+│   ├── DashboardPage.jsx
+│   ├── HomePage.jsx
+│   ├── ProfilePage.jsx
+│   ├── SettingsPage.jsx
+│   └── SkillTreePage.jsx
+├── services/            # Serviços e APIs
+│   ├── api.js
+│   ├── firebase.js
+│   └── soundSystem.js
+├── stores/              # Stores do Zustand
+│   └── useAppStore.js
+├── utils/               # Utilitários
+│   ├── constants.js
+│   ├── helpers.js
+│   └── skillTreeGenerator.js
+├── App.jsx              # Componente principal
+└── main.jsx             # Ponto de entrada
+```
+
+## 🎯 Funcionalidades
+
+### ✅ Implementadas
+- 🔐 **Autenticação completa** (email/senha, Google)
+- 🏠 **Página inicial** com hero section e features
+- 📊 **Dashboard** com estatísticas e progresso
+- 🌳 **Visualização de árvores de habilidades**
+- 👤 **Perfil de usuário** com conquistas
+- ⚙️ **Configurações** (tema, som, notificações)
+- 🔊 **Sistema de som** com feedback auditivo
+- 📱 **Design responsivo** para todos os dispositivos
+- 🎨 **Tema dark/light** com glassmorphism
+- 🔔 **Sistema de notificações** toast
+- 🎯 **Gamificação** com níveis e conquistas
+
+### 🚧 Em Desenvolvimento
+- 📈 **Analytics avançados**
+- 🤝 **Sistema social** (amigos, rankings)
+- 📚 **Biblioteca de recursos**
+- 🎮 **Mini-jogos educativos**
+- 📱 **App mobile** (React Native)
 
 ## 🎨 Design System
 
-### Paleta de Cores
-```css
-/* Tema Dark Tech Fantasy */
---bg-primary: #121212
---accent-neon: #1ECBF4
---accent-runic: #FF914D
---text-primary: #EAEAEA
---glow-effect: rgba(30, 203, 244, 0.3)
+### Cores Principais
+- **Primary**: `#1ECBF4` (Neon Blue)
+- **Accent**: `#FF6B35` (Runic Orange)
+- **Dark**: `#0A0A0A` (Deep Black)
+- **Success**: `#10B981`
+- **Error**: `#EF4444`
+- **Warning**: `#F59E0B`
+
+### Tipografia
+- **Heading**: Orbitron (futurística)
+- **Body**: Inter (legível)
+- **Code**: JetBrains Mono
+
+### Componentes
+- **Glass Cards**: Efeito glassmorphism
+- **Neon Effects**: Bordas e textos com brilho
+- **Smooth Animations**: Transições fluidas
+- **Responsive Grid**: Layout adaptativo
+
+## 🔧 Scripts Disponíveis
+
+```bash
+# Desenvolvimento
+npm run dev          # Inicia servidor de desenvolvimento
+npm run start        # Alias para dev
+
+# Build
+npm run build        # Build para produção
+npm run preview      # Preview do build
+npm run analyze      # Análise do bundle
+
+# Qualidade
+npm run lint         # Executa ESLint
+npm run clean        # Limpa node_modules e dist
 ```
 
-### Elementos Visuais
-- **Nós de Skill**: Efeitos de glow e crescimento
-- **Conexões**: Linhas animadas tipo "galhos mágicos"
-- **Partículas**: Sistema minimalista e inteligente
-- **Modais**: Transições suaves com backdrop blur
+## 🌐 Variáveis de Ambiente
 
-## 🚀 Roadmap de Desenvolvimento
+| Variável | Descrição | Exemplo |
+|----------|-----------|----------|
+| `VITE_FIREBASE_API_KEY` | Chave da API do Firebase | `AIza...` |
+| `VITE_FIREBASE_PROJECT_ID` | ID do projeto Firebase | `my-project` |
+| `VITE_API_BASE_URL` | URL base da API | `http://localhost:5000/api` |
+| `VITE_ENABLE_ANALYTICS` | Habilitar analytics | `true` |
+| `VITE_DEBUG_MODE` | Modo debug | `true` |
 
-### Fase 1: Fundação Backend ✅
-- [x] Modelagem Firestore
-- [x] Estrutura FastAPI
-- [x] Sistema de autenticação
+## 🚀 Deploy
 
-### Fase 2: API Core ⏳
-- [ ] Endpoints principais
-- [ ] Geração de skill trees
-- [ ] Sistema de progresso
+### Vercel (Recomendado)
+```bash
+npm install -g vercel
+vercel
+```
 
-### Fase 3: Frontend Base ⏳
-- [ ] Componentes React
-- [ ] Integração D3.js
-- [ ] Sistema de roteamento
+### Netlify
+```bash
+npm run build
+# Upload da pasta dist/
+```
 
-### Fase 4: Experiência Completa ⏳
-- [ ] Sistema de som
-- [ ] Animações avançadas
-- [ ] Modo portfólio
-- [ ] Deploy final
+### Firebase Hosting
+```bash
+npm install -g firebase-tools
+firebase login
+firebase init hosting
+npm run build
+firebase deploy
+```
 
-## 🎮 Como Usar
+## 🧪 Testes
 
-1. **Defina seu Objetivo**: "Desenvolvedor Full-Stack com Rust"
-2. **Explore sua Árvore**: Visualize todas as habilidades necessárias
-3. **Desbloqueie Skills**: Complete pré-requisitos para avançar
-4. **Comprove Evolução**: Adicione links de projetos e certificações
-5. **Compartilhe**: Modo portfólio público para mostrar sua jornada
+```bash
+# Executar testes
+npm run test
 
-## 🧙‍♂️ Filosofia do Projeto
+# Testes com coverage
+npm run test:coverage
 
-> *"Todo grande mago começou como aprendiz. Todo expert foi iniciante. A diferença está no mapa que seguiram."*
+# Testes em modo watch
+npm run test:watch
+```
 
-Project Odysseus acredita que o aprendizado deve ser:
-- **Visual**: Mapas claros em vez de listas confusas
-- **Progressivo**: Um passo de cada vez, com base sólida
-- **Motivador**: Gamificação que celebra cada conquista
-- **Prático**: Foco em habilidades aplicáveis no mercado
+## 📱 PWA
+
+O aplicativo é configurado como PWA (Progressive Web App):
+- ✅ Instalável no dispositivo
+- ✅ Funciona offline (cache básico)
+- ✅ Notificações push
+- ✅ Ícones adaptativos
+
+## 🔒 Segurança
+
+- **Firebase Security Rules** configuradas
+- **Validação de entrada** com Zod
+- **Sanitização** de dados do usuário
+- **HTTPS** obrigatório em produção
+- **CSP Headers** configurados
+
+## 🐛 Troubleshooting
+
+### Problemas Comuns
+
+1. **Erro de Firebase**:
+   - Verifique as variáveis de ambiente
+   - Confirme as configurações do projeto Firebase
+
+2. **Erro de Build**:
+   - Limpe o cache: `npm run clean && npm install`
+   - Verifique a versão do Node.js (>=18)
+
+3. **Problemas de Performance**:
+   - Use o React DevTools Profiler
+   - Verifique o bundle analyzer: `npm run analyze`
+
+## 🤝 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch: `git checkout -b feature/nova-feature`
+3. Commit: `git commit -m 'Add nova feature'`
+4. Push: `git push origin feature/nova-feature`
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👥 Equipe
+
+- **Jasi** - Desenvolvedor Principal
+- **Você** - Colaborador
 
 ---
 
-**Desenvolvido com ⚡ por Claude & Equipe**
-*Que sua jornada seja épica!* 🗡️✨
+**Project Odysseus** - Transformando aprendizado em aventura! 🚀
