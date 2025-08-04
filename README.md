@@ -79,7 +79,7 @@ src/
 └── main.jsx             # Ponto de entrada
 ```
 
-## 🎯 Funcionalidades
+## 🎯 Funcionalidades (ALGUMAS NO PROCESSO) 
 
 ### ✅ Implementadas
 - 🔐 **Autenticação completa** (email/senha, Google)
@@ -231,8 +231,8 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 👥 Equipe
 
-- **Jasi** - Desenvolvedor Principal
-- **Você** - Colaborador
+- **João Lucas de Oliveira** - Desenvolvedor Principal
+- **Você** - Colaborador testando esse projeto que criei para testes, o funcionamento ficará em análise por um tempo até eu dar os updates para construção de algo incrível! 
 
 ---
 
