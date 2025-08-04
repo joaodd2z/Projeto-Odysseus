@@ -13,6 +13,11 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../services/firebase';
 import { useAppStore } from '../stores/useAppStore';
 import { playSuccessSound, playErrorSound } from '../utils/soundSystem';
+import { createLogger } from '../utils/logger';
+import { handleError, AuthenticationError, NetworkError, withErrorHandling } from '../utils/errorHandler';
+import { validateUserInput } from '../utils/validators';
+
+const logger = createLogger('Auth', { enablePerformance: true });
 
 export const useAuth = () => {
   const [loading, setLoading] = useState(true);
@@ -68,11 +73,49 @@ export const useAuth = () => {
   }, [setUser, setError]);
   
   // Sign up with email and password
-  const signUp = async (email, password, displayName) => {
+  const signUp = withErrorHandling('Auth', 'HIGH')(async (email, password, displayName) => {
+    const startTime = performance.now();
+    
     try {
       setLoading(true);
       
+      // Validate all inputs
+      const emailValidation = validateUserInput(email, { type: 'email' });
+      const passwordValidation = validateUserInput(password, { type: 'password' });
+      const nameValidation = validateUserInput(displayName, { type: 'displayName' });
+      
+      if (!emailValidation.isValid) {
+        throw new AuthenticationError(
+          emailValidation.getFirstError()?.message || 'Invalid email format',
+          'validation',
+          { field: 'email' }
+        );
+      }
+      
+      if (!passwordValidation.isValid) {
+        throw new AuthenticationError(
+          passwordValidation.getFirstError()?.message || 'Invalid password format',
+          'validation',
+          { field: 'password' }
+        );
+      }
+      
+      if (displayName && !nameValidation.isValid) {
+        throw new AuthenticationError(
+          nameValidation.getFirstError()?.message || 'Invalid display name format',
+          'validation',
+          { field: 'displayName' }
+        );
+      }
+      
+      logger.info('Starting user registration', {
+        email: email.substring(0, 3) + '***',
+        hasDisplayName: !!displayName
+      });
+      
       const { user } = await createUserWithEmailAndPassword(auth, email, password);
+      
+      logger.performance('firebase_auth_register', performance.now() - startTime);
       
       // Update profile with display name
       await updateProfile(user, { displayName });
@@ -89,6 +132,8 @@ export const useAuth = () => {
           preferredLearningStyle: 'visual',
           difficultyLevel: 'intermediate',
           timeCommitment: 'moderate',
+          soundEnabled: true,
+          theme: 'dark'
         },
         stats: {
           totalSkillsCompleted: 0,
@@ -98,7 +143,9 @@ export const useAuth = () => {
         }
       };
       
+      const firestoreStartTime = performance.now();
       await setDoc(doc(db, 'users', user.uid), userProfile);
+      logger.performance('firestore_user_create', performance.now() - firestoreStartTime);
       
       if (soundEnabled) playSuccessSound();
       
@@ -108,9 +155,26 @@ export const useAuth = () => {
         message: `Account created successfully. Welcome aboard, ${displayName}! 🚀`
       });
       
+      logger.info('User registration successful', {
+        uid: user.uid,
+        email: email.substring(0, 3) + '***',
+        displayName: displayName || 'none',
+        totalDuration: performance.now() - startTime
+      });
+      
       return { success: true, user };
+      
     } catch (error) {
-      console.error('Sign up error:', error);
+      const handledError = await handleError(error, {
+        retryFunction: () => signUp(email, password, displayName),
+        fallbackData: null
+      });
+      
+      logger.error('User registration failed', handledError, {
+        email: email.substring(0, 3) + '***',
+        errorCode: error.code,
+        duration: performance.now() - startTime
+      });
       
       if (soundEnabled) playErrorSound();
       
@@ -127,7 +191,7 @@ export const useAuth = () => {
           errorMessage = 'Please enter a valid email address';
           break;
         default:
-          errorMessage = error.message;
+          errorMessage = handledError.message || error.message;
       }
       
       setError(errorMessage);
@@ -135,14 +199,40 @@ export const useAuth = () => {
     } finally {
       setLoading(false);
     }
-  };
+  });
   
   // Sign in with email and password
-  const signIn = async (email, password) => {
+  const signIn = withErrorHandling('Auth', 'HIGH')(async (email, password) => {
+    const startTime = performance.now();
+    
     try {
       setLoading(true);
       
+      // Validate input
+      const emailValidation = validateUserInput(email, { type: 'email' });
+      const passwordValidation = validateUserInput(password, { type: 'password' });
+      
+      if (!emailValidation.isValid) {
+        throw new AuthenticationError(
+          emailValidation.getFirstError()?.message || 'Invalid email format',
+          'validation',
+          { field: 'email' }
+        );
+      }
+      
+      if (!passwordValidation.isValid) {
+        throw new AuthenticationError(
+          passwordValidation.getFirstError()?.message || 'Invalid password format',
+          'validation',
+          { field: 'password' }
+        );
+      }
+      
+      logger.info('Starting user login', { email: email.substring(0, 3) + '***' });
+      
       const { user } = await signInWithEmailAndPassword(auth, email, password);
+      
+      logger.performance('firebase_auth_login', performance.now() - startTime);
       
       if (soundEnabled) playSuccessSound();
       
@@ -152,9 +242,25 @@ export const useAuth = () => {
         message: `Successfully signed in. Ready to continue your journey? ⚔️`
       });
       
+      logger.info('User login successful', {
+        uid: user.uid,
+        email: email.substring(0, 3) + '***',
+        totalDuration: performance.now() - startTime
+      });
+      
       return { success: true, user };
+      
     } catch (error) {
-      console.error('Sign in error:', error);
+      const handledError = await handleError(error, {
+        retryFunction: () => signIn(email, password),
+        fallbackData: null
+      });
+      
+      logger.error('User login failed', handledError, {
+        email: email.substring(0, 3) + '***',
+        errorCode: error.code,
+        duration: performance.now() - startTime
+      });
       
       if (soundEnabled) playErrorSound();
       
@@ -174,7 +280,7 @@ export const useAuth = () => {
           errorMessage = 'Too many failed attempts. Please try again later';
           break;
         default:
-          errorMessage = error.message;
+          errorMessage = handledError.message || error.message;
       }
       
       setError(errorMessage);
@@ -182,7 +288,7 @@ export const useAuth = () => {
     } finally {
       setLoading(false);
     }
-  };
+  });
   
   // Sign in with Google
   const signInWithGoogle = async () => {
@@ -236,9 +342,13 @@ export const useAuth = () => {
   };
   
   // Sign out
-  const logout = async () => {
+  const logout = withErrorHandling('Auth', 'MEDIUM')(async () => {
+    const startTime = performance.now();
+    
     try {
       setLoading(true);
+      
+      logger.info('Starting user logout');
       
       await signOut(auth);
       
@@ -250,18 +360,31 @@ export const useAuth = () => {
         message: 'You have been successfully signed out. See you soon! 👋'
       });
       
+      logger.performance('firebase_auth_logout', performance.now() - startTime);
+      logger.info('User logout successful', {
+        duration: performance.now() - startTime
+      });
+      
       return { success: true };
+      
     } catch (error) {
-      console.error('Sign out error:', error);
+      const handledError = await handleError(error, {
+        retryFunction: () => logout(),
+        fallbackData: null
+      });
+      
+      logger.error('User logout failed', handledError, {
+        duration: performance.now() - startTime
+      });
       
       if (soundEnabled) playErrorSound();
       
-      setError('Failed to sign out');
-      return { success: false, error: error.message };
+      setError(handledError.message || 'Failed to sign out');
+      return { success: false, error: handledError.message || error.message };
     } finally {
       setLoading(false);
     }
-  };
+  });
   
   // Reset password
   const resetPassword = async (email) => {

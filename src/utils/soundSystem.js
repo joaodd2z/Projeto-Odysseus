@@ -292,23 +292,32 @@ let userInteracted = false;
 const initializeOnInteraction = async () => {
   if (!userInteracted) {
     userInteracted = true;
+    console.log('🎵 Initializing sound system on user interaction...');
     await soundSystem.initialize();
     
     // Remove event listeners after initialization
     document.removeEventListener('click', initializeOnInteraction);
     document.removeEventListener('keydown', initializeOnInteraction);
     document.removeEventListener('touchstart', initializeOnInteraction);
+    document.removeEventListener('mousedown', initializeOnInteraction);
+    
+    console.log('🎵 Sound system ready!');
   }
 };
 
 // Add event listeners for user interaction
-document.addEventListener('click', initializeOnInteraction);
-document.addEventListener('keydown', initializeOnInteraction);
-document.addEventListener('touchstart', initializeOnInteraction);
+document.addEventListener('click', initializeOnInteraction, { once: false });
+document.addEventListener('keydown', initializeOnInteraction, { once: false });
+document.addEventListener('touchstart', initializeOnInteraction, { once: false });
+document.addEventListener('mousedown', initializeOnInteraction, { once: false });
 
 // Export functions
-export const initializeSoundSystem = () => {
-  // This will be called on first user interaction
+export const initializeSoundSystem = async () => {
+  // Force initialization if not already done
+  if (!soundSystem.initialized) {
+    console.log('🎵 Force initializing sound system...');
+    await soundSystem.initialize();
+  }
 };
 
 export const playSound = (soundName) => {

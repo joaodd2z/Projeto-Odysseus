@@ -10,7 +10,23 @@ import { initializeSoundSystem } from './utils/soundSystem.js'
 import './services/firebase.js'
 
 // Initialize sound system on app start
-initializeSoundSystem()
+initializeSoundSystem().then(() => {
+  console.log('🎵 Sound system initialization attempted');
+}).catch(err => {
+  console.warn('🎵 Sound system initialization failed:', err);
+});
+
+// Also try to initialize on window load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    initializeSoundSystem();
+  }, 1000);
+});
+
+// Force initialization on first click anywhere
+document.addEventListener('click', () => {
+  initializeSoundSystem();
+}, { once: true });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

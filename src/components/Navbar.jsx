@@ -24,7 +24,6 @@ const Navbar = ({ apiStatus }) => {
   
   const { logout } = useAuth();
 
-  // Detectar scroll para minimizar navbar
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
