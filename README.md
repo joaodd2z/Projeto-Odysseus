@@ -1,239 +1,126 @@
-# 🧭 Project Odysseus - Frontend
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/icraft2170-youtube-data-mcp-server-badge.png)](https://mseep.ai/app/icraft2170-youtube-data-mcp-server)
 
-Um sistema de aprendizado gamificado que transforma objetivos de carreira em árvores de habilidades épicas.
+# YouTube MCP Server
+[![smithery badge](https://smithery.ai/badge/@icraft2170/youtube-data-mcp-server)](https://smithery.ai/server/@icraft2170/youtube-data-mcp-server)
 
-## 🚀 Tecnologias
+A Model Context Protocol (MCP) server implementation utilizing the YouTube Data API. It allows AI language models to interact with YouTube content through a standardized interface.
 
-- **React 18** - Biblioteca principal
-- **Vite** - Build tool e dev server
-- **TypeScript** - Tipagem estática
-- **Tailwind CSS** - Framework de CSS utilitário
-- **Firebase** - Autenticação e banco de dados
-- **Zustand** - Gerenciamento de estado
-- **React Router** - Roteamento
-- **Framer Motion** - Animações
-- **D3.js** - Visualizações de dados
-- **Lucide React** - Ícones
+## Key Features
 
-## 📦 Instalação
+### Video Information
+* Retrieve detailed video information (title, description, duration, statistics)
+* Search for videos by keywords
+* Get related videos based on a specific video
+* Calculate and analyze video engagement ratios
 
-1. **Clone o repositório:**
+### Transcript/Caption Management
+* Retrieve video captions with multi-language support
+* Specify language preferences for transcripts
+* Access time-stamped captions for precise content reference
+
+### Channel Analysis
+* View detailed channel statistics (subscribers, views, video count)
+* Get top-performing videos from a channel
+* Analyze channel growth and engagement metrics
+
+### Trend Analysis
+* View trending videos by region and category
+* Compare performance metrics across multiple videos
+* Discover popular content in specific categories
+
+## Available Tools
+
+The server provides the following MCP tools:
+
+| Tool Name | Description | Required Parameters |
+|-----------|-------------|---------------------|
+| `getVideoDetails` | Get detailed information about multiple YouTube videos including metadata, statistics, and content details | `videoIds` (array) |
+| `searchVideos` | Search for videos based on a query string | `query`, `maxResults` (optional) |
+| `getTranscripts` | Retrieve transcripts for multiple videos | `videoIds` (array), `lang` (optional) |
+| `getRelatedVideos` | Get videos related to a specific video based on YouTube's recommendation algorithm | `videoId`, `maxResults` (optional) |
+| `getChannelStatistics` | Retrieve detailed metrics for multiple channels including subscriber count, view count, and video count | `channelIds` (array) |
+| `getChannelTopVideos` | Get the most viewed videos from a specific channel | `channelId`, `maxResults` (optional) |
+| `getVideoEngagementRatio` | Calculate engagement metrics for multiple videos (views, likes, comments, and engagement ratio) | `videoIds` (array) |
+| `getTrendingVideos` | Get currently popular videos by region and category | `regionCode` (optional), `categoryId` (optional), `maxResults` (optional) |
+| `compareVideos` | Compare statistics across multiple videos | `videoIds` (array) |
+
+## Installation
+
+### Automatic Installation via Smithery
+
+Automatically install YouTube MCP Server for Claude Desktop via [Smithery](https://smithery.ai/server/@icraft2170/youtube-data-mcp-server):
+
 ```bash
-git clone <repository-url>
-cd frontend
+npx -y @smithery/cli install @icraft2170/youtube-data-mcp-server --client claude
 ```
 
-2. **Instale as dependências:**
+### Manual Installation
 ```bash
+# Install from npm
+npm install youtube-data-mcp-server
+
+# Or clone repository
+git clone https://github.com/icraft2170/youtube-data-mcp-server.git
+cd youtube-data-mcp-server
 npm install
 ```
 
-3. **Configure as variáveis de ambiente:**
-```bash
-cp .env.example .env
-```
-Edite o arquivo `.env` com suas configurações do Firebase e outras APIs.
+## Environment Configuration
+Set the following environment variables:
+* `YOUTUBE_API_KEY`: YouTube Data API key (required)
+* `YOUTUBE_TRANSCRIPT_LANG`: Default caption language (optional, default: 'ko')
 
-4. **Inicie o servidor de desenvolvimento:**
+## MCP Client Configuration
+Add the following to your Claude Desktop configuration file:
+
+```json
+{
+  "mcpServers": {
+    "youtube": {
+      "command": "npx",
+      "args": ["-y", "youtube-data-mcp-server"],
+      "env": {
+        "YOUTUBE_API_KEY": "YOUR_API_KEY_HERE",
+        "YOUTUBE_TRANSCRIPT_LANG": "ko"
+      }
+    }
+  }
+}
+```
+
+## YouTube API Setup
+1. Access Google Cloud Console
+2. Create a new project or select an existing one
+3. Enable YouTube Data API v3
+4. Create API credentials (API key)
+5. Use the generated API key in your environment configuration
+
+## Development
+
 ```bash
+# Install dependencies
+npm install
+
+# Run in development mode
 npm run dev
-```
-
-O aplicativo estará disponível em `http://localhost:3000`
-
-## 🏗️ Estrutura do Projeto
-
-```
-src/
-├── components/          # Componentes reutilizáveis
-│   ├── ErrorBoundary.jsx
-│   ├── LoadingScreen.jsx
-│   ├── Navbar.jsx
-│   ├── NotificationToast.jsx
-│   ├── ProtectedRoute.jsx
-│   ├── PublicRoute.jsx
-│   ├── Sidebar.jsx
-│   ├── SkillNode.jsx
-│   └── SkillTreeVisualization.jsx
-├── hooks/               # Custom hooks
-│   └── useAuth.js
-├── pages/               # Páginas da aplicação
-│   ├── AboutPage.jsx
-│   ├── AuthPage.jsx
-│   ├── DashboardPage.jsx
-│   ├── HomePage.jsx
-│   ├── ProfilePage.jsx
-│   ├── SettingsPage.jsx
-│   └── SkillTreePage.jsx
-├── services/            # Serviços e APIs
-│   ├── api.js
-│   ├── firebase.js
-│   └── soundSystem.js
-├── stores/              # Stores do Zustand
-│   └── useAppStore.js
-├── utils/               # Utilitários
-│   ├── constants.js
-│   ├── helpers.js
-│   └── skillTreeGenerator.js
-├── App.jsx              # Componente principal
-└── main.jsx             # Ponto de entrada
-```
-
-## 🎯 Funcionalidades
-
-### ✅ Implementadas
-- 🔐 **Autenticação completa** (email/senha, Google)
-- 🏠 **Página inicial** com hero section e features
-- 📊 **Dashboard** com estatísticas e progresso
-- 🌳 **Visualização de árvores de habilidades**
-- 👤 **Perfil de usuário** com conquistas
-- ⚙️ **Configurações** (tema, som, notificações)
-- 🔊 **Sistema de som** com feedback auditivo
-- 📱 **Design responsivo** para todos os dispositivos
-- 🎨 **Tema dark/light** com glassmorphism
-- 🔔 **Sistema de notificações** toast
-- 🎯 **Gamificação** com níveis e conquistas
-
-### 🚧 Em Desenvolvimento
-- 📈 **Analytics avançados**
-- 🤝 **Sistema social** (amigos, rankings)
-- 📚 **Biblioteca de recursos**
-- 🎮 **Mini-jogos educativos**
-- 📱 **App mobile** (React Native)
-
-## 🎨 Design System
-
-### Cores Principais
-- **Primary**: `#1ECBF4` (Neon Blue)
-- **Accent**: `#FF6B35` (Runic Orange)
-- **Dark**: `#0A0A0A` (Deep Black)
-- **Success**: `#10B981`
-- **Error**: `#EF4444`
-- **Warning**: `#F59E0B`
-
-### Tipografia
-- **Heading**: Orbitron (futurística)
-- **Body**: Inter (legível)
-- **Code**: JetBrains Mono
-
-### Componentes
-- **Glass Cards**: Efeito glassmorphism
-- **Neon Effects**: Bordas e textos com brilho
-- **Smooth Animations**: Transições fluidas
-- **Responsive Grid**: Layout adaptativo
-
-## 🔧 Scripts Disponíveis
-
-```bash
-# Desenvolvimento
-npm run dev          # Inicia servidor de desenvolvimento
-npm run start        # Alias para dev
 
 # Build
-npm run build        # Build para produção
-npm run preview      # Preview do build
-npm run analyze      # Análise do bundle
-
-# Qualidade
-npm run lint         # Executa ESLint
-npm run clean        # Limpa node_modules e dist
-```
-
-## 🌐 Variáveis de Ambiente
-
-| Variável | Descrição | Exemplo |
-|----------|-----------|----------|
-| `VITE_FIREBASE_API_KEY` | Chave da API do Firebase | `AIza...` |
-| `VITE_FIREBASE_PROJECT_ID` | ID do projeto Firebase | `my-project` |
-| `VITE_API_BASE_URL` | URL base da API | `http://localhost:5000/api` |
-| `VITE_ENABLE_ANALYTICS` | Habilitar analytics | `true` |
-| `VITE_DEBUG_MODE` | Modo debug | `true` |
-
-## 🚀 Deploy
-
-### Vercel (Recomendado)
-```bash
-npm install -g vercel
-vercel
-```
-
-### Netlify
-```bash
 npm run build
-# Upload da pasta dist/
 ```
 
-### Firebase Hosting
-```bash
-npm install -g firebase-tools
-firebase login
-firebase init hosting
-npm run build
-firebase deploy
-```
+## Network Configuration
 
-## 🧪 Testes
+The server exposes the following ports for communication:
+- HTTP: 3000
+- gRPC: 3001
 
-```bash
-# Executar testes
-npm run test
+## System Requirements
+- Node.js 18.0.0 or higher
 
-# Testes com coverage
-npm run test:coverage
+## Security Considerations
+- Always keep your API key secure and never commit it to version control systems
+- Manage your API key through environment variables or configuration files
+- Set usage limits for your API key to prevent unauthorized use
 
-# Testes em modo watch
-npm run test:watch
-```
-
-## 📱 PWA
-
-O aplicativo é configurado como PWA (Progressive Web App):
-- ✅ Instalável no dispositivo
-- ✅ Funciona offline (cache básico)
-- ✅ Notificações push
-- ✅ Ícones adaptativos
-
-## 🔒 Segurança
-
-- **Firebase Security Rules** configuradas
-- **Validação de entrada** com Zod
-- **Sanitização** de dados do usuário
-- **HTTPS** obrigatório em produção
-- **CSP Headers** configurados
-
-## 🐛 Troubleshooting
-
-### Problemas Comuns
-
-1. **Erro de Firebase**:
-   - Verifique as variáveis de ambiente
-   - Confirme as configurações do projeto Firebase
-
-2. **Erro de Build**:
-   - Limpe o cache: `npm run clean && npm install`
-   - Verifique a versão do Node.js (>=18)
-
-3. **Problemas de Performance**:
-   - Use o React DevTools Profiler
-   - Verifique o bundle analyzer: `npm run analyze`
-
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch: `git checkout -b feature/nova-feature`
-3. Commit: `git commit -m 'Add nova feature'`
-4. Push: `git push origin feature/nova-feature`
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👥 Equipe
-
-- **Jasi** - Desenvolvedor Principal
-- **Você** - Colaborador
-
----
-
-**Project Odysseus** - Transformando aprendizado em aventura! 🚀
+## License
+This project is licensed under the MIT License. See the LICENSE file for details. 
