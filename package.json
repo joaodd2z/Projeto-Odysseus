@@ -1,0 +1,85 @@
+{
+  "name": "project-odysseus-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "🧭 Project Odysseus - Transform your career goals into epic skill trees",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "start": "vite",
+    "clean": "rm -rf dist node_modules",
+    "analyze": "vite build --mode analyze"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@hookform/resolvers": "^3.3.2",
+    "@use-gesture/react": "^10.3.0",
+    "axios": "^1.6.2",
+    "clsx": "^2.0.0",
+    "d3": "^7.8.5",
+    "date-fns": "^2.30.0",
+    "docx": "^9.5.1",
+    "file-saver": "^2.0.5",
+    "firebase": "^10.7.1",
+    "framer-motion": "^10.16.5",
+    "howler": "^2.2.4",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.294.0",
+    "react": "^18.2.0",
+    "react-confetti": "^6.1.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
+    "react-hot-toast": "^2.4.1",
+    "react-intersection-observer": "^9.5.3",
+    "react-router-dom": "^6.20.1",
+    "react-spring": "^9.7.3",
+    "react-use": "^17.4.2",
+    "recharts": "^2.8.0",
+    "tailwind-merge": "^2.0.0",
+    "uuid": "^9.0.1",
+    "xlsx": "^0.18.5",
+    "zod": "^3.22.4",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@types/d3": "^7.4.3",
+    "@types/howler": "^2.2.11",
+    "@types/lodash": "^4.14.202",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/uuid": "^9.0.7",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

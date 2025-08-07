@@ -1,0 +1,55 @@
+# FORCE VERCEL TO IGNORE ALL PYTHON/BACKEND FILES
+# This is a Node.js/React project ONLY
+
+# Ignore ALL Python-related files and folders
+backend/
+backend/**/*
+*.py
+**/*.py
+requirements.txt
+**/requirements.txt
+main.py
+**/main.py
+firebase-service-account*.json*
+**/*firebase-service-account*.json*
+__pycache__/
+**/__pycache__/
+*.pyc
+**/*.pyc
+*.pyo
+**/*.pyo
+*.pyd
+**/*.pyd
+.Python
+env/
+venv/
+.venv/
+**/.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Ignore non-essential folders
+assets/
+docs/
+false/
+
+# ONLY ALLOW THESE FILES/FOLDERS
+!frontend/
+!frontend/**
+!package.json
+!.vercelignore
+!README.md
+!LICENSE
+!frontend/
+!frontend/**

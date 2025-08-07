@@ -1,0 +1,1002 @@
+[
+  {
+    "id": 1,
+    "nome": "ChatGPT",
+    "descricao": "Assistente de IA conversacional mais popular do mundo para texto, código, análise e muito mais.",
+    "categoria": "Assistente Geral",
+    "resultado": "Texto",
+    "tipo": "Freemium",
+    "link": "https://chat.openai.com",
+    "tags": ["texto", "conversação", "código", "análise", "popular"]
+  },
+  {
+    "id": 2,
+    "nome": "Claude",
+    "descricao": "Assistente de IA da Anthropic, excelente para análise de documentos e conversas longas.",
+    "categoria": "Assistente Geral",
+    "resultado": "Texto",
+    "tipo": "Freemium",
+    "link": "https://claude.ai",
+    "tags": ["texto", "análise", "documentos", "conversação"]
+  },
+  {
+    "id": 3,
+    "nome": "Perplexity",
+    "descricao": "Motor de busca com IA que fornece respostas precisas com fontes em tempo real.",
+    "categoria": "Pesquisa",
+    "resultado": "Texto",
+    "tipo": "Freemium",
+    "link": "https://perplexity.ai",
+    "tags": ["pesquisa", "busca", "fontes", "tempo real"]
+  },
+  {
+    "id": 4,
+    "nome": "Gemini",
+    "descricao": "IA do Google integrada com seus serviços, excelente para produtividade.",
+    "categoria": "Assistente Geral",
+    "resultado": "Texto",
+    "tipo": "Gratuito",
+    "link": "https://gemini.google.com",
+    "tags": ["google", "produtividade", "integração", "gratuito"]
+  },
+  {
+    "id": 5,
+    "nome": "Midjourney",
+    "descricao": "Gerador de imagens de IA mais popular, conhecido pela qualidade artística excepcional.",
+    "categoria": "Geração de Imagem",
+    "resultado": "Imagem",
+    "tipo": "Pago",
+    "link": "https://midjourney.com",
+    "tags": ["imagem", "arte", "criativo", "qualidade"]
+  },
+  {
+    "id": 6,
+    "nome": "DALL-E 3",
+    "descricao": "Gerador de imagens da OpenAI integrado ao ChatGPT, excelente para prompts detalhados.",
+    "categoria": "Geração de Imagem",
+    "resultado": "Imagem",
+    "tipo": "Freemium",
+    "link": "https://openai.com/dall-e-3",
+    "tags": ["imagem", "openai", "prompts", "detalhado"]
+  },
+  {
+    "id": 7,
+    "nome": "Stable Diffusion",
+    "descricao": "Gerador de imagens open source, gratuito e altamente customizável.",
+    "categoria": "Geração de Imagem",
+    "resultado": "Imagem",
+    "tipo": "Gratuito",
+    "link": "https://stability.ai",
+    "tags": ["imagem", "open source", "gratuito", "customizável"]
+  },
+  {
+    "id": 8,
+    "nome": "Runway ML",
+    "descricao": "Plataforma completa para criação de vídeos com IA, incluindo Gen-3 Alpha.",
+    "categoria": "Geração de Vídeo",
+    "resultado": "Vídeo",
+    "tipo": "Freemium",
+    "link": "https://runwayml.com",
+    "tags": ["vídeo", "criação", "gen-3", "profissional"]
+  },
+  {
+    "id": 9,
+    "nome": "Pika Labs",
+    "descricao": "Transforma texto ou imagem em vídeos animados. Ideal para motion design.",
+    "categoria": "Geração de Vídeo",
+    "resultado": "Vídeo",
+    "tipo": "Freemium",
+    "link": "https://pika.art",
+    "tags": ["vídeo", "animação", "motion", "criativo"]
+  },
+  {
+     "id": 10,
+     "nome": "ElevenLabs",
+     "descricao": "Gerador de voz com IA mais realista, clonagem de voz e síntese de fala.",
+     "categoria": "Geração de Voz",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://elevenlabs.io",
+     "tags": ["voz", "áudio", "clonagem", "realista"]
+   },
+   {
+     "id": 11,
+     "nome": "Suno AI",
+     "descricao": "Cria músicas completas com letras a partir de prompts de texto.",
+     "categoria": "Geração de Música",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://suno.ai",
+     "tags": ["música", "letras", "composição", "criativo"]
+   },
+   {
+     "id": 12,
+     "nome": "Udio",
+     "descricao": "Gerador de música com IA focado em qualidade profissional e diversos gêneros.",
+     "categoria": "Geração de Música",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://udio.com",
+     "tags": ["música", "profissional", "gêneros", "qualidade"]
+   },
+   {
+     "id": 13,
+     "nome": "GitHub Copilot",
+     "descricao": "Assistente de código com IA integrado ao VS Code e outros editores.",
+     "categoria": "Programação",
+     "resultado": "Código",
+     "tipo": "Pago",
+     "link": "https://github.com/features/copilot",
+     "tags": ["código", "programação", "vscode", "github"]
+   },
+   {
+     "id": 14,
+     "nome": "Cursor",
+     "descricao": "Editor de código com IA integrada, fork do VS Code otimizado para desenvolvimento.",
+     "categoria": "Programação",
+     "resultado": "Código",
+     "tipo": "Freemium",
+     "link": "https://cursor.sh",
+     "tags": ["código", "editor", "desenvolvimento", "vscode"]
+   },
+   {
+     "id": 15,
+     "nome": "Replit AI",
+     "descricao": "Ambiente de desenvolvimento online com assistente de IA para múltiplas linguagens.",
+     "categoria": "Programação",
+     "resultado": "Código",
+     "tipo": "Freemium",
+     "link": "https://replit.com",
+     "tags": ["código", "online", "múltiplas linguagens", "desenvolvimento"]
+   },
+   {
+     "id": 16,
+     "nome": "Grammarly",
+     "descricao": "Corretor gramatical e de estilo com IA para melhorar a escrita em inglês.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://grammarly.com",
+     "tags": ["escrita", "gramática", "correção", "inglês"]
+   },
+   {
+     "id": 17,
+     "nome": "Jasper AI",
+     "descricao": "Plataforma de criação de conteúdo com IA para marketing e copywriting.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Pago",
+     "link": "https://jasper.ai",
+     "tags": ["escrita", "marketing", "copywriting", "conteúdo"]
+   },
+   {
+     "id": 18,
+     "nome": "Copy.ai",
+     "descricao": "Gerador de textos para marketing, vendas e criação de conteúdo.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://copy.ai",
+     "tags": ["escrita", "marketing", "vendas", "conteúdo"]
+   },
+   {
+     "id": 19,
+     "nome": "Notion AI",
+     "descricao": "IA integrada ao Notion para escrita, resumos e organização de informações.",
+     "categoria": "Produtividade",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://notion.so",
+     "tags": ["produtividade", "escrita", "organização", "notion"]
+   },
+   {
+      "id": 20,
+      "nome": "Gamma App",
+      "descricao": "Cria apresentações e PDFs com base em prompts. Muito útil para quem não sabe design.",
+      "categoria": "Apresentações",
+    "resultado": "PDF",
+    "tipo": "Freemium",
+    "link": "https://gamma.app",
+    "tags": ["apresentação", "slides", "pdf", "design"]
+  },
+  {
+    "id": 21,
+    "nome": "Luma AI",
+    "descricao": "Cria vídeos 3D realistas a partir de texto. Ideal para protótipos ou demonstrações.",
+    "categoria": "Geração 3D",
+    "resultado": "Vídeo",
+    "tipo": "Freemium",
+    "link": "https://lumalabs.ai",
+    "tags": ["3D", "vídeo", "realista", "protótipo"]
+  },
+  {
+    "id": 22,
+    "nome": "Canva AI",
+    "descricao": "Ferramentas de design com IA integradas ao Canva. Gera layouts, textos e imagens automaticamente.",
+    "categoria": "Design",
+    "resultado": "Imagem",
+    "tipo": "Freemium",
+    "link": "https://www.canva.com/ai-image-generator/",
+    "tags": ["design", "layout", "automático", "canva"]
+  },
+  {
+    "id": 23,
+    "nome": "Remove.bg",
+    "descricao": "Remove fundos de imagens automaticamente com precisão profissional.",
+    "categoria": "Edição de Imagem",
+    "resultado": "Imagem",
+    "tipo": "Freemium",
+    "link": "https://www.remove.bg",
+    "tags": ["edição", "fundo", "remoção", "automático"]
+  },
+  {
+    "id": 24,
+    "nome": "DeepL",
+    "descricao": "Tradutor com IA mais preciso do mundo, superior ao Google Translate.",
+    "categoria": "Tradução",
+    "resultado": "Texto",
+    "tipo": "Freemium",
+    "link": "https://deepl.com",
+    "tags": ["tradução", "idiomas", "preciso", "multilíngue"]
+  },
+  {
+    "id": 25,
+    "nome": "Figma AI",
+    "descricao": "Ferramentas de IA integradas ao Figma para design de interfaces e prototipagem.",
+    "categoria": "Design",
+    "resultado": "Design",
+    "tipo": "Freemium",
+    "link": "https://figma.com",
+    "tags": ["design", "ui", "prototipagem", "interface"]
+  },
+  {
+    "id": 26,
+    "nome": "Zapier AI",
+    "descricao": "Automação de tarefas com IA, conecta diferentes aplicativos e serviços.",
+    "categoria": "Automação",
+    "resultado": "Automação",
+    "tipo": "Freemium",
+    "link": "https://zapier.com",
+    "tags": ["automação", "integração", "workflow", "produtividade"]
+  },
+  {
+    "id": 27,
+    "nome": "Tableau AI",
+    "descricao": "Análise de dados e visualização com recursos de IA para insights automáticos.",
+    "categoria": "Análise de Dados",
+    "resultado": "Análise",
+    "tipo": "Pago",
+    "link": "https://tableau.com",
+    "tags": ["dados", "análise", "visualização", "insights"]
+  },
+  {
+    "id": 28,
+    "nome": "Otter.ai",
+    "descricao": "Transcrição automática de reuniões e conversas com resumos inteligentes.",
+    "categoria": "Transcrição",
+    "resultado": "Texto",
+    "tipo": "Freemium",
+    "link": "https://otter.ai",
+    "tags": ["transcrição", "reuniões", "áudio", "resumos"]
+  },
+  {
+    "id": 29,
+    "nome": "Synthesia",
+    "descricao": "Cria vídeos com avatares virtuais falando em múltiplos idiomas.",
+    "categoria": "Geração de Vídeo",
+    "resultado": "Vídeo",
+    "tipo": "Pago",
+    "link": "https://synthesia.io",
+    "tags": ["vídeo", "avatar", "multilíngue", "apresentação"]
+  },
+  {
+    "id": 30,
+    "nome": "Krisp",
+    "descricao": "Remove ruído de fundo em chamadas de vídeo e áudio com IA.",
+    "categoria": "Áudio",
+    "resultado": "Áudio",
+    "tipo": "Freemium",
+    "link": "https://krisp.ai",
+    "tags": ["áudio", "ruído", "chamadas", "limpeza"]
+  },
+  {
+    "id": 31,
+    "nome": "Loom AI",
+    "descricao": "Gravação de tela com recursos de IA para resumos e transcrições automáticas.",
+    "categoria": "Gravação",
+    "resultado": "Vídeo",
+    "tipo": "Freemium",
+    "link": "https://loom.com",
+    "tags": ["gravação", "tela", "resumos", "transcrição"]
+  },
+  {
+    "id": 32,
+    "nome": "Framer AI",
+    "descricao": "Criação de websites com IA, desde o design até o código final.",
+    "categoria": "Desenvolvimento Web",
+    "resultado": "Website",
+    "tipo": "Freemium",
+    "link": "https://framer.com",
+    "tags": ["website", "design", "código", "desenvolvimento"]
+  },
+  {
+    "id": 33,
+    "nome": "Descript",
+    "descricao": "Editor de áudio e vídeo baseado em texto com clonagem de voz.",
+    "categoria": "Edição de Vídeo",
+    "resultado": "Vídeo",
+    "tipo": "Freemium",
+    "link": "https://descript.com",
+    "tags": ["edição", "vídeo", "áudio", "texto"]
+  },
+  {
+    "id": 34,
+    "nome": "Tome",
+    "descricao": "Cria apresentações interativas e storytelling com IA.",
+    "categoria": "Apresentações",
+    "resultado": "Apresentação",
+    "tipo": "Freemium",
+    "link": "https://tome.app",
+    "tags": ["apresentação", "storytelling", "interativo", "narrativa"]
+  },
+  {
+    "id": 35,
+    "nome": "Writesonic",
+    "descricao": "Plataforma completa de escrita com IA para blogs, anúncios e conteúdo.",
+    "categoria": "Escrita",
+    "resultado": "Texto",
+    "tipo": "Freemium",
+    "link": "https://writesonic.com",
+    "tags": ["escrita", "blog", "anúncios", "conteúdo"]
+  },
+  {
+    "id": 36,
+    "nome": "Murf AI",
+    "descricao": "Gerador de voz profissional com múltiplas vozes e idiomas.",
+    "categoria": "Geração de Voz",
+    "resultado": "Áudio",
+    "tipo": "Freemium",
+    "link": "https://murf.ai",
+    "tags": ["voz", "profissional", "idiomas", "narração"]
+  },
+  {
+    "id": 37,
+    "nome": "Pictory",
+    "descricao": "Transforma artigos e textos em vídeos automaticamente.",
+    "categoria": "Geração de Vídeo",
+    "resultado": "Vídeo",
+    "tipo": "Freemium",
+    "link": "https://pictory.ai",
+    "tags": ["vídeo", "artigos", "automático", "conteúdo"]
+  },
+  {
+    "id": 38,
+    "nome": "Brandmark",
+    "descricao": "Criador de logos e identidade visual com IA.",
+    "categoria": "Design",
+    "resultado": "Logo",
+    "tipo": "Pago",
+    "link": "https://brandmark.io",
+    "tags": ["logo", "marca", "identidade", "design"]
+  },
+  {
+    "id": 39,
+    "nome": "Speechify",
+    "descricao": "Converte texto em fala com vozes naturais para acessibilidade.",
+    "categoria": "Texto para Fala",
+    "resultado": "Áudio",
+    "tipo": "Freemium",
+    "link": "https://speechify.com",
+    "tags": ["texto", "fala", "acessibilidade", "leitura"]
+  },
+  {
+    "id": 40,
+    "nome": "Fireflies.ai",
+    "descricao": "Assistente de reuniões com IA para gravação, transcrição e análise.",
+    "categoria": "Reuniões",
+    "resultado": "Análise",
+    "tipo": "Freemium",
+    "link": "https://fireflies.ai",
+    "tags": ["reuniões", "transcrição", "análise", "produtividade"]
+   },
+   {
+     "id": 41,
+     "nome": "Craiyon",
+     "descricao": "Gera imagens simples via prompt, sem necessidade de conta. Totalmente gratuito.",
+     "categoria": "Geração de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Gratuito",
+     "link": "https://www.craiyon.com",
+     "tags": ["imagem", "gratuito", "simples", "sem conta"]
+   },
+   {
+     "id": 42,
+     "nome": "You.com",
+     "descricao": "Motor de busca com IA integrado e múltiplos formatos de resposta.",
+     "categoria": "Pesquisa",
+     "resultado": "Texto",
+     "tipo": "Gratuito",
+     "link": "https://you.com",
+     "tags": ["busca", "pesquisa", "gratuito", "múltiplos formatos"]
+   },
+   {
+     "id": 43,
+     "nome": "Google AI Studio",
+     "descricao": "Vários serviços como tradução, video intelligence, speech-to-text gratuitos.",
+     "categoria": "API Multimodal",
+     "resultado": "Múltiplo",
+     "tipo": "Gratuito",
+     "link": "https://cloud.google.com/use-cases/free-ai-tools",
+     "tags": ["api", "multimodal", "google", "gratuito"]
+   },
+   {
+     "id": 44,
+     "nome": "Pixlr AI",
+     "descricao": "Edição online de imagens com recursos de IA; plano free disponível.",
+     "categoria": "Edição de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Freemium",
+     "link": "https://pixlr.com",
+     "tags": ["edição", "imagem", "online", "freemium"]
+   },
+   {
+     "id": 45,
+     "nome": "Hugging Face",
+     "descricao": "Plataforma com milhares de modelos de IA gratuitos para usar e testar.",
+     "categoria": "Plataforma de Modelos",
+     "resultado": "Múltiplo",
+     "tipo": "Gratuito",
+     "link": "https://huggingface.co",
+     "tags": ["modelos", "open source", "gratuito", "comunidade"]
+   },
+   {
+     "id": 46,
+     "nome": "Replicate",
+     "descricao": "Execute modelos de IA na nuvem com API simples. Muitos modelos gratuitos.",
+     "categoria": "Plataforma de Modelos",
+     "resultado": "Múltiplo",
+     "tipo": "Freemium",
+     "link": "https://replicate.com",
+     "tags": ["api", "modelos", "nuvem", "freemium"]
+   },
+   {
+     "id": 47,
+     "nome": "Poe by Quora",
+     "descricao": "Acesso a múltiplos chatbots de IA (GPT, Claude, etc) em uma interface.",
+     "categoria": "Assistente Geral",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://poe.com",
+     "tags": ["chatbot", "múltiplos", "interface", "freemium"]
+   },
+   {
+     "id": 48,
+     "nome": "Character.AI",
+     "descricao": "Converse com personagens de IA personalizados ou crie os seus próprios.",
+     "categoria": "Entretenimento",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://character.ai",
+     "tags": ["personagens", "conversa", "criativo", "entretenimento"]
+   },
+   {
+     "id": 49,
+     "nome": "Bing Chat",
+     "descricao": "Assistente de IA da Microsoft integrado ao navegador Edge, gratuito.",
+     "categoria": "Assistente Geral",
+     "resultado": "Texto",
+     "tipo": "Gratuito",
+     "link": "https://bing.com/chat",
+     "tags": ["microsoft", "gratuito", "navegador", "integrado"]
+   },
+   {
+     "id": 50,
+     "nome": "Phind",
+     "descricao": "Motor de busca especializado em programação com respostas de IA.",
+     "categoria": "Programação",
+     "resultado": "Código",
+     "tipo": "Gratuito",
+     "link": "https://phind.com",
+     "tags": ["programação", "busca", "código", "gratuito"]
+   },
+   {
+     "id": 51,
+     "nome": "Codeium",
+     "descricao": "Assistente de código gratuito para múltiplos editores, alternativa ao Copilot.",
+     "categoria": "Programação",
+     "resultado": "Código",
+     "tipo": "Gratuito",
+     "link": "https://codeium.com",
+     "tags": ["código", "gratuito", "editores", "assistente"]
+   },
+   {
+     "id": 52,
+     "nome": "Tabnine",
+     "descricao": "Autocompletar código com IA, versão gratuita disponível.",
+     "categoria": "Programação",
+     "resultado": "Código",
+     "tipo": "Freemium",
+     "link": "https://tabnine.com",
+     "tags": ["autocompletar", "código", "freemium", "produtividade"]
+   },
+   {
+     "id": 53,
+     "nome": "Blackbox AI",
+     "descricao": "Assistente de programação que responde perguntas sobre código.",
+     "categoria": "Programação",
+     "resultado": "Código",
+     "tipo": "Freemium",
+     "link": "https://blackbox.ai",
+     "tags": ["programação", "perguntas", "código", "assistente"]
+   },
+   {
+     "id": 54,
+     "nome": "Replit Ghostwriter",
+     "descricao": "IA integrada ao Replit para sugestões de código em tempo real.",
+     "categoria": "Programação",
+     "resultado": "Código",
+     "tipo": "Freemium",
+     "link": "https://replit.com/ai",
+     "tags": ["replit", "tempo real", "sugestões", "integrado"]
+   },
+   {
+     "id": 55,
+     "nome": "Quillbot",
+     "descricao": "Parafraseia e melhora textos, versão gratuita com limitações.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://quillbot.com",
+     "tags": ["paráfrase", "melhoria", "texto", "freemium"]
+   },
+   {
+     "id": 56,
+     "nome": "Wordtune",
+     "descricao": "Reescreve frases para melhorar clareza e tom, plano gratuito disponível.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://wordtune.com",
+     "tags": ["reescrita", "clareza", "tom", "freemium"]
+   },
+   {
+     "id": 57,
+     "nome": "Rytr",
+     "descricao": "Gerador de conteúdo com IA para blogs, emails e mais, plano gratuito.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://rytr.me",
+     "tags": ["gerador", "conteúdo", "blogs", "emails"]
+   },
+   {
+     "id": 58,
+     "nome": "Simplified AI Writer",
+     "descricao": "Ferramenta de escrita com IA para marketing e conteúdo, versão gratuita.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://simplified.com",
+     "tags": ["marketing", "conteúdo", "escrita", "gratuito"]
+   },
+   {
+     "id": 59,
+     "nome": "Hemingway Editor",
+     "descricao": "Melhora a legibilidade do texto, versão web gratuita.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://hemingwayapp.com",
+     "tags": ["legibilidade", "melhoria", "web", "gratuito"]
+   },
+   {
+     "id": 60,
+     "nome": "Lexica",
+     "descricao": "Motor de busca para imagens geradas por IA, com gerador próprio.",
+     "categoria": "Geração de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Freemium",
+     "link": "https://lexica.art",
+     "tags": ["busca", "imagens", "gerador", "arte"]
+   },
+   {
+     "id": 61,
+     "nome": "Playground AI",
+     "descricao": "Gerador de imagens com IA, 1000 imagens gratuitas por dia.",
+     "categoria": "Geração de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Freemium",
+     "link": "https://playgroundai.com",
+     "tags": ["gerador", "1000 grátis", "diário", "imagens"]
+   },
+   {
+     "id": 62,
+     "nome": "Leonardo AI",
+     "descricao": "Gerador de imagens focado em arte e design, plano gratuito generoso.",
+     "categoria": "Geração de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Freemium",
+     "link": "https://leonardo.ai",
+     "tags": ["arte", "design", "generoso", "gratuito"]
+   },
+   {
+     "id": 63,
+     "nome": "Ideogram",
+     "descricao": "Gerador de imagens com IA especializado em texto dentro de imagens.",
+     "categoria": "Geração de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Freemium",
+     "link": "https://ideogram.ai",
+     "tags": ["texto", "imagens", "especializado", "freemium"]
+   },
+   {
+     "id": 64,
+     "nome": "Clipdrop",
+     "descricao": "Suite de ferramentas de IA para edição de imagens, várias gratuitas.",
+     "categoria": "Edição de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Freemium",
+     "link": "https://clipdrop.co",
+     "tags": ["suite", "edição", "várias", "ferramentas"]
+   },
+   {
+     "id": 65,
+     "nome": "Photopea",
+     "descricao": "Editor de imagens online gratuito similar ao Photoshop, com recursos de IA.",
+     "categoria": "Edição de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Gratuito",
+     "link": "https://photopea.com",
+     "tags": ["editor", "photoshop", "online", "gratuito"]
+   },
+   {
+     "id": 66,
+     "nome": "Upscayl",
+     "descricao": "Aumenta resolução de imagens com IA, software gratuito e open source.",
+     "categoria": "Edição de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Gratuito",
+     "link": "https://upscayl.github.io",
+     "tags": ["upscale", "resolução", "open source", "gratuito"]
+   },
+   {
+     "id": 67,
+     "nome": "Waifu2x",
+     "descricao": "Melhora qualidade de imagens anime/arte com IA, totalmente gratuito.",
+     "categoria": "Edição de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Gratuito",
+     "link": "https://waifu2x.udp.jp",
+     "tags": ["anime", "arte", "qualidade", "gratuito"]
+   },
+   {
+     "id": 68,
+     "nome": "Rembg",
+     "descricao": "Remove fundo de imagens automaticamente, ferramenta open source.",
+     "categoria": "Edição de Imagem",
+     "resultado": "Imagem",
+     "tipo": "Gratuito",
+     "link": "https://github.com/danielgatis/rembg",
+     "tags": ["remoção", "fundo", "automático", "open source"]
+   },
+   {
+     "id": 69,
+     "nome": "Kapwing",
+     "descricao": "Editor de vídeo online com recursos de IA, plano gratuito disponível.",
+     "categoria": "Edição de Vídeo",
+     "resultado": "Vídeo",
+     "tipo": "Freemium",
+     "link": "https://kapwing.com",
+     "tags": ["editor", "online", "vídeo", "freemium"]
+   },
+   {
+     "id": 70,
+     "nome": "InVideo AI",
+     "descricao": "Cria vídeos a partir de texto com IA, plano gratuito com marca d'água.",
+     "categoria": "Geração de Vídeo",
+     "resultado": "Vídeo",
+     "tipo": "Freemium",
+     "link": "https://invideo.io",
+     "tags": ["texto para vídeo", "marca d'água", "freemium", "criação"]
+   },
+   {
+     "id": 71,
+     "nome": "Fliki",
+     "descricao": "Transforma texto em vídeos com vozes de IA, plano gratuito limitado.",
+     "categoria": "Geração de Vídeo",
+     "resultado": "Vídeo",
+     "tipo": "Freemium",
+     "link": "https://fliki.ai",
+     "tags": ["texto", "voz", "vídeos", "limitado"]
+   },
+   {
+     "id": 72,
+     "nome": "Steve AI",
+     "descricao": "Criador de vídeos animados com IA, versão gratuita disponível.",
+     "categoria": "Geração de Vídeo",
+     "resultado": "Vídeo",
+     "tipo": "Freemium",
+     "link": "https://steve.ai",
+     "tags": ["animados", "criador", "vídeos", "gratuito"]
+   },
+   {
+     "id": 73,
+     "nome": "Lumen5",
+     "descricao": "Transforma artigos em vídeos automaticamente, plano gratuito com limitações.",
+     "categoria": "Geração de Vídeo",
+     "resultado": "Vídeo",
+     "tipo": "Freemium",
+     "link": "https://lumen5.com",
+     "tags": ["artigos", "automático", "limitações", "transformação"]
+   },
+   {
+     "id": 74,
+     "nome": "Uberduck",
+     "descricao": "Clonagem de voz e síntese de fala com vozes de celebridades, plano gratuito.",
+     "categoria": "Geração de Voz",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://uberduck.ai",
+     "tags": ["clonagem", "celebridades", "síntese", "gratuito"]
+   },
+   {
+     "id": 75,
+     "nome": "Fakeyou",
+     "descricao": "Gerador de voz com IA usando vozes de personagens famosos, gratuito.",
+     "categoria": "Geração de Voz",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://fakeyou.com",
+     "tags": ["personagens", "famosos", "gerador", "gratuito"]
+   },
+   {
+     "id": 76,
+     "nome": "Voicemaker",
+     "descricao": "Converte texto em fala com múltiplas vozes, plano gratuito disponível.",
+     "categoria": "Texto para Fala",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://voicemaker.in",
+     "tags": ["texto para fala", "múltiplas vozes", "conversão", "freemium"]
+   },
+   {
+     "id": 77,
+     "nome": "Natural Reader",
+     "descricao": "Leitor de texto com vozes naturais, versão online gratuita.",
+     "categoria": "Texto para Fala",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://naturalreaders.com",
+     "tags": ["leitor", "vozes naturais", "online", "gratuito"]
+   },
+   {
+     "id": 78,
+     "nome": "Boomy",
+     "descricao": "Cria músicas originais com IA em segundos, plano gratuito disponível.",
+     "categoria": "Geração de Música",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://boomy.com",
+     "tags": ["músicas originais", "segundos", "criação", "freemium"]
+   },
+   {
+     "id": 79,
+     "nome": "Soundraw",
+     "descricao": "Gerador de música royalty-free com IA, plano gratuito limitado.",
+     "categoria": "Geração de Música",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://soundraw.io",
+     "tags": ["royalty-free", "gerador", "limitado", "música"]
+   },
+   {
+     "id": 80,
+     "nome": "Beatoven",
+     "descricao": "Cria música de fundo personalizada para vídeos, versão gratuita.",
+     "categoria": "Geração de Música",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://beatoven.ai",
+     "tags": ["fundo", "personalizada", "vídeos", "gratuita"]
+   },
+   {
+     "id": 81,
+     "nome": "Mubert",
+     "descricao": "Gera música ambiente e trilhas sonoras com IA, plano gratuito.",
+     "categoria": "Geração de Música",
+     "resultado": "Áudio",
+     "tipo": "Freemium",
+     "link": "https://mubert.com",
+     "tags": ["ambiente", "trilhas sonoras", "geração", "gratuito"]
+   },
+   {
+     "id": 82,
+     "nome": "Audacity",
+     "descricao": "Editor de áudio open source com plugins de IA disponíveis.",
+     "categoria": "Edição de Áudio",
+     "resultado": "Áudio",
+     "tipo": "Gratuito",
+     "link": "https://audacityteam.org",
+     "tags": ["editor", "open source", "plugins", "gratuito"]
+   },
+   {
+     "id": 83,
+     "nome": "Adobe Podcast",
+     "descricao": "Melhora qualidade de áudio de podcasts com IA, gratuito.",
+     "categoria": "Edição de Áudio",
+     "resultado": "Áudio",
+     "tipo": "Gratuito",
+     "link": "https://podcast.adobe.com",
+     "tags": ["podcasts", "qualidade", "melhoria", "adobe"]
+   },
+   {
+     "id": 84,
+     "nome": "Whisper by OpenAI",
+     "descricao": "Transcrição de áudio para texto open source, extremamente preciso.",
+     "categoria": "Transcrição",
+     "resultado": "Texto",
+     "tipo": "Gratuito",
+     "link": "https://github.com/openai/whisper",
+     "tags": ["transcrição", "open source", "preciso", "openai"]
+   },
+   {
+     "id": 85,
+     "nome": "AssemblyAI",
+     "descricao": "API de transcrição e análise de áudio, plano gratuito disponível.",
+     "categoria": "Transcrição",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://assemblyai.com",
+     "tags": ["api", "análise", "áudio", "freemium"]
+   },
+   {
+     "id": 86,
+     "nome": "Rev AI",
+     "descricao": "Transcrição automática de áudio e vídeo, créditos gratuitos mensais.",
+     "categoria": "Transcrição",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://rev.ai",
+     "tags": ["automática", "vídeo", "créditos", "mensais"]
+   },
+   {
+     "id": 87,
+     "nome": "Trint",
+     "descricao": "Transcrição e edição de áudio/vídeo com IA, trial gratuito.",
+     "categoria": "Transcrição",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://trint.com",
+     "tags": ["edição", "trial", "áudio/vídeo", "transcrição"]
+   },
+   {
+     "id": 88,
+     "nome": "Calendly AI",
+     "descricao": "Agendamento inteligente com sugestões de IA, plano gratuito.",
+     "categoria": "Produtividade",
+     "resultado": "Agendamento",
+     "tipo": "Freemium",
+     "link": "https://calendly.com",
+     "tags": ["agendamento", "inteligente", "sugestões", "gratuito"]
+   },
+   {
+     "id": 89,
+     "nome": "Todoist AI",
+     "descricao": "Gerenciador de tarefas com recursos de IA para organização, plano gratuito.",
+     "categoria": "Produtividade",
+     "resultado": "Organização",
+     "tipo": "Freemium",
+     "link": "https://todoist.com",
+     "tags": ["tarefas", "organização", "gerenciador", "gratuito"]
+   },
+   {
+     "id": 90,
+     "nome": "Clockify AI",
+     "descricao": "Rastreamento de tempo com análises de IA, versão gratuita completa.",
+     "categoria": "Produtividade",
+     "resultado": "Análise",
+     "tipo": "Freemium",
+     "link": "https://clockify.me",
+     "tags": ["tempo", "rastreamento", "análises", "completa"]
+   },
+   {
+     "id": 91,
+     "nome": "Trello AI",
+     "descricao": "Gerenciamento de projetos com automações de IA, plano gratuito.",
+     "categoria": "Produtividade",
+     "resultado": "Gerenciamento",
+     "tipo": "Freemium",
+     "link": "https://trello.com",
+     "tags": ["projetos", "automações", "gerenciamento", "gratuito"]
+   },
+   {
+     "id": 92,
+     "nome": "Canva Magic Write",
+     "descricao": "Gerador de texto integrado ao Canva, plano gratuito disponível.",
+     "categoria": "Escrita",
+     "resultado": "Texto",
+     "tipo": "Freemium",
+     "link": "https://canva.com",
+     "tags": ["integrado", "canva", "gerador", "disponível"]
+   },
+   {
+     "id": 93,
+     "nome": "Tome AI",
+     "descricao": "Cria apresentações completas a partir de prompts, plano gratuito.",
+     "categoria": "Apresentações",
+     "resultado": "Apresentação",
+     "tipo": "Freemium",
+     "link": "https://tome.app",
+     "tags": ["completas", "prompts", "apresentações", "gratuito"]
+   },
+   {
+     "id": 94,
+     "nome": "Beautiful.AI",
+     "descricao": "Designer de apresentações com IA, templates gratuitos disponíveis.",
+     "categoria": "Apresentações",
+     "resultado": "Apresentação",
+     "tipo": "Freemium",
+     "link": "https://beautiful.ai",
+     "tags": ["designer", "templates", "disponíveis", "apresentações"]
+   },
+   {
+     "id": 95,
+     "nome": "Slides AI",
+     "descricao": "Extensão para Google Slides que gera apresentações com IA.",
+     "categoria": "Apresentações",
+     "resultado": "Apresentação",
+     "tipo": "Freemium",
+     "link": "https://slidesai.io",
+     "tags": ["extensão", "google slides", "gera", "apresentações"]
+   },
+   {
+     "id": 96,
+     "nome": "Decktopus",
+     "descricao": "Criador de apresentações com IA, templates e design automático.",
+     "categoria": "Apresentações",
+     "resultado": "Apresentação",
+     "tipo": "Freemium",
+     "link": "https://decktopus.com",
+     "tags": ["criador", "templates", "automático", "design"]
+   },
+   {
+     "id": 97,
+     "nome": "Looka",
+     "descricao": "Criador de logos com IA, versão gratuita para visualização.",
+     "categoria": "Design",
+     "resultado": "Logo",
+     "tipo": "Freemium",
+     "link": "https://looka.com",
+     "tags": ["logos", "visualização", "criador", "gratuita"]
+   },
+   {
+     "id": 98,
+     "nome": "Namelix",
+     "descricao": "Gerador de nomes para empresas com IA, completamente gratuito.",
+     "categoria": "Branding",
+     "resultado": "Nome",
+     "tipo": "Gratuito",
+     "link": "https://namelix.com",
+     "tags": ["nomes", "empresas", "completamente", "gratuito"]
+   },
+   {
+     "id": 99,
+     "nome": "Logomakr",
+     "descricao": "Designer de logos online com recursos de IA, versão gratuita.",
+     "categoria": "Design",
+     "resultado": "Logo",
+     "tipo": "Freemium",
+     "link": "https://logomakr.com",
+     "tags": ["designer", "online", "recursos", "gratuita"]
+   },
+   {
+     "id": 100,
+     "nome": "Hatchful",
+     "descricao": "Criador de logos da Shopify, completamente gratuito e fácil de usar.",
+     "categoria": "Design",
+     "resultado": "Logo",
+     "tipo": "Gratuito",
+     "link": "https://hatchful.shopify.com",
+     "tags": ["shopify", "completamente", "fácil", "gratuito"]
+   }
+ ]
